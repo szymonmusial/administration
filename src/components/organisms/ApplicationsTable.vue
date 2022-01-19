@@ -15,9 +15,7 @@
       <Column field="event_date" header="Event Date"> </Column>
       <Column>
         <template #body="slotProps">
-          <EditButton
-            @click="editApplications(slotProps.data.id)"
-            :loading="false" /></template
+          <EditApplication :id="slotProps.data.id" /></template
       ></Column>
     </DataTable>
   </div>
@@ -27,52 +25,25 @@
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 
-import EditButton from "../atoms/EditButton.vue";
+import EditApplication from "./EditApplication.vue";
 import PriorityColumn from "./PriorityColumn.vue";
 
-import { reactive } from "@vue/reactivity";
+import { useStore } from "vuex";
+import { computed } from "@vue/runtime-core";
 
 export default {
   name: "ApplicationsTable",
   components: {
     DataTable,
     Column,
-    EditButton,
+    EditApplication,
     PriorityColumn,
   },
   setup() {
-    const applications = reactive([
-      {
-        id: "0",
-        name: "Wniosek o dofinansowanie kotów",
-        reference_number: "111-11",
-        priority: true,
-        application_type: "Wniosek Ogólny",
-        person: "Szymon Musiał",
-        person_id: 0,
-        department: "Dział Badawczo-Rozwojowy",
-        filing_date: "19-01-2020",
-        event_date: "10-01-2020",
-      },
-      {
-        id: "1",
-        name: "Wniosek o dofinansowanie Psów",
-        reference_number: "111-12",
-        priority: false,
-        application_type: "Wniosek Ogólny",
-        person: "Szymon Musiał",
-        person_id: 1,
-        department: "Dział Badawczo-Rozwojowy",
-        filing_date: "19-01-2020",
-        event_date: "01-01-2020",
-      },
-    ]);
+    const store = useStore();
+    const applications = computed(() => store.getters.getApplications);
 
-    const editApplications = (id) => {
-      alert(id);
-    };
-
-    return { applications, editApplications };
+    return { applications };
   },
 };
 </script>
