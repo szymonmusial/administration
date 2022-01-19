@@ -1,5 +1,15 @@
 <template>
-  <router-view />
+  <div class="app">
+    <Toast />
+    <router-view />
+  </div>
 </template>
 
-<style></style>
+<script>
+import Toast from "primevue/toast";
+
+export default {
+  name: "app",
+  components: { Toast },
+};
+</script>

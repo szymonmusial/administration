@@ -11,15 +11,19 @@
 <script>
 import { ref } from "@vue/reactivity";
 import LargeButton from "../atoms/LargeButton.vue";
+import ownToast from "../../composables/ownToast";
 
 export default {
   name: "AddNewApplication",
   components: { LargeButton },
   setup() {
+    const { showSuccessToast } = ownToast();
     const loading = ref(false);
+
     const addNewApplication = () => {
       loading.value = true;
       alert("I want add new application");
+      showSuccessToast("Success", "Added New Application");
     };
     return { addNewApplication, loading };
   },
