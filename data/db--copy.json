@@ -1,0 +1,22 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": " Learn vue 3",
+      "content": "How to use a composition API",
+      "status": true
+    },
+    {
+      "title": "Learn how to use composables",
+      "content": "Composables vs Mixins",
+      "status": false,
+      "id": 2
+    },
+    {
+      "title": "Learn i18n",
+      "content": "Vue I18n is internationalization plugin",
+      "status": true,
+      "id": 3
+    }
+  ]
+}

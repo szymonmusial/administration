@@ -1,0 +1,28 @@
+{
+  "applications": [
+    {
+      "id": "0",
+      "name": "Wniosek o dofinansowanie kotów",
+      "reference_number": "111-11",
+      "priority": true,
+      "application_type": "Wniosek Ogólny",
+      "person": "Szymon Musiał",
+      "person_id": 0,
+      "department": "Dział Badawczo-Rozwojowy",
+      "filing_date": "19-01-2020",
+      "event_date": "10-01-2020"
+    },
+    {
+      "id": "1",
+      "name": "Wniosek o dofinansowanie Psów",
+      "reference_number": "111-12",
+      "priority": false,
+      "application_type": "Wniosek Ogólny",
+      "person": "Szymon Musiał",
+      "person_id": 1,
+      "department": "Dział Badawczo-Rozwojowy",
+      "filing_date": "19-01-2020",
+      "event_date": "01-01-2020"
+    }
+  ]
+}
