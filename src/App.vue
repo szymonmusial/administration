@@ -21,9 +21,14 @@ export default {
     const { showErrorToast } = ownToast();
 
     onMounted(() => {
-      store.dispatch("setApplications").catch(() => {
-        showErrorToast("Critical Error", "Application failed to load");
-      });
+      store
+        .dispatch("setApplications")
+        .then(() => {
+          store.commit("setLoadingStatus", true);
+        })
+        .catch(() => {
+          showErrorToast("Critical Error", "Application failed to load");
+        });
     });
   },
 };

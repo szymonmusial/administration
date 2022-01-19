@@ -1,5 +1,5 @@
 <template>
-  <div id="loading" v-if="false">
+  <div id="loading" v-if="!loadingStatus">
     <ProgressSpinner class="spinner" />
   </div>
 </template>
@@ -16,7 +16,7 @@ export default {
     const store = useStore();
     const loadingStatus = computed(() => store.getters.getLoadingStatus);
 
-    return loadingStatus;
+    return { loadingStatus };
   },
 };
 </script>
