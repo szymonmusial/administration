@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="priority-column">
     <WarningButton
       v-if="priority"
       label="Yes"
@@ -22,5 +22,9 @@ export default {
 <style scoped>
 .warning-button {
   cursor: default !important;
+}
+
+.priority-column {
+  text-align: center;
 }
 </style>

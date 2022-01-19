@@ -56,7 +56,7 @@ export default {
         id: "1",
         name: "Wniosek o dofinansowanie Psów",
         reference_number: "111-12",
-        priority: true,
+        priority: false,
         application_type: "Wniosek Ogólny",
         person: "Szymon Musiał",
         person_id: 1,
