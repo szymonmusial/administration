@@ -1,5 +1,10 @@
 <template>
-  <Modal @closeModal="closeModal" v-if="Modal == 'add'">ab </Modal>
+  <Modal
+    @closeModal="closeModal"
+    v-if="Modal == 'add'"
+    title="Add New Applications"
+    >ab
+  </Modal>
 </template>
 
 <script>
