@@ -1,5 +1,9 @@
 <template>
-  <Button :label="label" class="p-button-secondary button--large" />
+  <Button
+    :label="label"
+    class="p-button-secondary button--large"
+    :loading="loading"
+  />
 </template>
 
 <script>
@@ -7,7 +11,7 @@ import Button from "primevue/button";
 
 export default {
   name: "AddNewApplication",
-  props: ["label"],
+  props: ["label", "loading"],
   components: { Button },
 };
 </script>

@@ -15,7 +15,9 @@
       <Column field="event_date" header="Event Date"> </Column>
       <Column>
         <template #body="slotProps">
-          <EditButton @click="editApplications(slotProps.data.id)" /></template
+          <EditButton
+            @click="editApplications(slotProps.data.id)"
+            :loading="false" /></template
       ></Column>
     </DataTable>
   </div>

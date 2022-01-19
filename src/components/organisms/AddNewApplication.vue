@@ -1,20 +1,27 @@
 <template>
   <div class="add-application">
-    <LargeButton label="Add New Applications" @click="addNewApplication" />
+    <LargeButton
+      label="Add New Applications"
+      @click="addNewApplication"
+      :loading="loading"
+    />
   </div>
 </template>
 
 <script>
+import { ref } from "@vue/reactivity";
 import LargeButton from "../atoms/LargeButton.vue";
 
 export default {
   name: "AddNewApplication",
   components: { LargeButton },
   setup() {
+    const loading = ref(false);
     const addNewApplication = () => {
+      loading.value = true;
       alert("I want add new application");
     };
-    return { addNewApplication };
+    return { addNewApplication, loading };
   },
 };
 </script>
