@@ -3,4 +3,17 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
-createApp(App).use(store).use(router).mount("#app");
+import PrimeVue from "primevue/config";
+import ToastService from "primevue/toastservice";
+import "primevue/resources/primevue.min.css";
+import "primevue/resources/themes/lara-dark-indigo/theme.css";
+import "primeicons/primeicons.css";
+
+const app = createApp(App);
+app.use(store);
+app.use(router);
+
+app.use(PrimeVue);
+app.use(ToastService);
+
+app.mount("#app");
