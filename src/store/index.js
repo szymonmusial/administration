@@ -4,7 +4,7 @@ import applications from "./modules/applications";
 export default createStore({
   state: {
     loadingStatus: false,
-    modal: "add",
+    modal: "close",
   },
   getters: {
     getLoadingStatus: (state) => state.loadingStatus,

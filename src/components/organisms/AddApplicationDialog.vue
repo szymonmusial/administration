@@ -3,7 +3,8 @@
     @closeModal="closeModal"
     v-if="Modal == 'add'"
     title="Add New Applications"
-    >ab
+  >
+    s
   </Modal>
 </template>
 
