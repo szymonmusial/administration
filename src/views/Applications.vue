@@ -8,8 +8,8 @@
 
 <script>
 import ApplicationsTable from "../components/organisms/ApplicationsTable.vue";
-import AddNewApplication from "../components/organisms/AddNewApplication.vue";
-import AddApplicationDialog from "../components/organisms/AddApplicationDialog.vue";
+import AddNewApplication from "../components/organisms/ButtonNewApplication.vue";
+import AddApplicationDialog from "../components/organisms/ModalAddApplication.vue";
 
 export default {
   name: "Applications",

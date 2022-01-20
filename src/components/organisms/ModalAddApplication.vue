@@ -13,7 +13,7 @@
 import Modal from "../atoms/Modal.vue";
 import { useStore } from "vuex";
 import { computed } from "@vue/runtime-core";
-import BasicApplicationForm from "../molecules/BasicApplicationForm.vue";
+import BasicApplicationForm from "../molecules/FormAddApplication.vue";
 
 export default {
   name: "AddApplicationDialog",
