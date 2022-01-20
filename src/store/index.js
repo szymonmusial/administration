@@ -1,5 +1,6 @@
 import { createStore } from "vuex";
 import applications from "./modules/applications";
+import departments from "./modules/departments";
 
 export default createStore({
   state: {
@@ -18,5 +19,5 @@ export default createStore({
       state.modal = modal;
     },
   },
-  modules: { applications },
+  modules: { applications, departments },
 });

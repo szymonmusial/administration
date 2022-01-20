@@ -6,18 +6,11 @@
 
 <script>
 import ProgressSpinner from "primevue/progressspinner";
-import { computed } from "@vue/runtime-core";
-import { useStore } from "vuex";
 
 export default {
   name: "Loading",
   components: { ProgressSpinner },
-  setup() {
-    const store = useStore();
-    const loadingStatus = computed(() => store.getters.getLoadingStatus);
-
-    return { loadingStatus };
-  },
+  props: ["loadingStatus"],
 };
 </script>
 

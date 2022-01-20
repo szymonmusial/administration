@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <loading />
+    <loading :loadingStatus="loadingStatus" />
     <Toast />
     <router-view />
   </div>
@@ -8,8 +8,8 @@
 
 <script>
 import Toast from "primevue/toast";
-import Loading from "./components/organisms/Loading.vue";
-import { onMounted } from "@vue/runtime-core";
+import Loading from "./components/atoms/Loading.vue";
+import { onMounted, ref } from "@vue/runtime-core";
 import { useStore } from "vuex";
 import ownToast from "./composables/ownToast";
 
@@ -19,17 +19,23 @@ export default {
   setup() {
     const store = useStore();
     const { showErrorToast } = ownToast();
+    const loadingStatus = ref(false);
 
     onMounted(() => {
       store
         .dispatch("setApplications")
         .then(() => {
-          store.commit("setLoadingStatus", true);
+          loadingStatus.value = true;
         })
         .catch(() => {
           showErrorToast("Critical Error", "Application failed to load");
         });
+      store.dispatch("setDepartments").catch(() => {
+        showErrorToast("Error", "Departments failed to load");
+      });
     });
+
+    return { loadingStatus };
   },
 };
 </script>

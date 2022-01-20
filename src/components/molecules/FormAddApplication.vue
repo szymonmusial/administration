@@ -79,11 +79,14 @@ import Dropdown from "primevue/dropdown";
 import Calendar from "primevue/calendar";
 import { ref } from "@vue/reactivity";
 import { computed } from "@vue/runtime-core";
+import { useStore } from "vuex";
 
 export default {
   name: "BasicApplicationForm",
   components: { InputText, Dropdown, Calendar },
   setup() {
+    //store
+    const store = useStore();
     //Priority
     const priorityOptions = ref([
       { name: "Yes", code: "true" },
@@ -106,11 +109,9 @@ export default {
     person.value = "Szymon Musiał";
     const personIsEditable = ref(false);
     //Department
-    const departmentOptions = ref([
-      { name: "Dział Badawczo-Rozwojowy", id: 0 },
-      { name: "Support", id: 1 },
-      { name: "Kadry", id: 2 },
-    ]);
+    const departmentOptions = computed(() => {
+      store.getters("getDepartments");
+    });
     const department = ref("");
     //Filing Date
     const filingDate = ref("");

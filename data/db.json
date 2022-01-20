@@ -24,5 +24,10 @@
       "filing_date": "19-01-2020",
       "event_date": "01-01-2020"
     }
+  ],
+  "departments": [
+    { "name": "Dział Badawczo-Rozwojowy", "id": 0 },
+    { "name": "Support", "id": 1 },
+    { "name": "Kadry", "id": 2 }
   ]
 }
