@@ -1,11 +1,11 @@
 <template>
   <Modal
     @closeModal="closeModal"
-    v-if="Modal == 'add'"
+    v-if="modal == 'add'"
     title="Add New Applications"
+    class="p-fluid p-formgrid p-grid basic-application-form"
   >
     <BasicApplicationForm />
-    <!--- w sloce daje formularze i pola które potrzebuję. np edit form a w nim inputName itd -->
   </Modal>
 </template>
 
@@ -13,19 +13,25 @@
 import Modal from "../atoms/Modal.vue";
 import { useStore } from "vuex";
 import { computed } from "@vue/runtime-core";
-import BasicApplicationForm from "../molecules/BasicApplicationForm.vue";
+import BasicApplicationForm from "../molecules/FormAddApplication.vue";
 
 export default {
   name: "AddApplicationDialog",
-  components: { Modal, BasicApplicationForm },
+  components: {
+    Modal,
+    BasicApplicationForm,
+  },
   setup() {
     const store = useStore();
-    const Modal = computed(() => store.getters.getModal);
+    const modal = computed(() => store.getters.getModal);
     const closeModal = () => {
       store.commit("setModal", "close");
     };
 
-    return { closeModal, Modal };
+    return {
+      closeModal,
+      modal,
+    };
   },
 };
 </script>

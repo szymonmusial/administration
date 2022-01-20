@@ -3,7 +3,6 @@
     <template #header>
       <h3>{{ title }}</h3>
     </template>
-
     <slot></slot>
   </Dialog>
 </template>
@@ -17,7 +16,6 @@ export default {
   props: ["title"],
   setup(props, { emit }) {
     const closeModal = () => emit("closeModal");
-
     return { closeModal };
   },
 };
