@@ -26,7 +26,7 @@ import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 
 import EditApplication from "./EditApplication.vue";
-import PriorityColumn from "./PriorityColumn.vue";
+import PriorityColumn from "../molecules/PriorityColumn.vue";
 
 import { useStore } from "vuex";
 import { computed } from "@vue/runtime-core";
