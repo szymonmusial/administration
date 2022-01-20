@@ -4,7 +4,8 @@
     v-if="Modal == 'add'"
     title="Add New Applications"
   >
-    s
+    <BasicApplicationForm />
+    <!--- w sloce daje formularze i pola które potrzebuję. np edit form a w nim inputName itd -->
   </Modal>
 </template>
 
@@ -12,10 +13,11 @@
 import Modal from "../atoms/Modal.vue";
 import { useStore } from "vuex";
 import { computed } from "@vue/runtime-core";
+import BasicApplicationForm from "../molecules/BasicApplicationForm.vue";
 
 export default {
   name: "AddApplicationDialog",
-  components: { Modal },
+  components: { Modal, BasicApplicationForm },
   setup() {
     const store = useStore();
     const Modal = computed(() => store.getters.getModal);
@@ -28,4 +30,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.p-dialog .p-dialog-header {
+  padding: 0.5rem 1.5rem;
+}
+</style>
