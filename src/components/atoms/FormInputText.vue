@@ -1,7 +1,12 @@
 <template>
   <div class="p-field p-col-12 p-md-6">
     <label for="name">{{ label }}</label>
-    <InputText class="text" type="text" v-model="text" @input="emitText" />
+    <InputText
+      class="text"
+      type="text"
+      :modelValue="modelValue"
+      @input="emitText"
+    />
   </div>
 </template>
 
@@ -11,12 +16,12 @@ import { ref } from "@vue/reactivity";
 
 export default {
   name: "FormInputText",
-  props: ["label"],
+  props: ["label", "modelValue"],
   components: { InputText },
   setup(props, { emit }) {
     const text = ref("");
-    const emitText = () => {
-      emit("emitText", text);
+    const emitText = (event) => {
+      emit("update:modelValue", event.target.value);
     };
     return { text, emitText };
   },

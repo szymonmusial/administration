@@ -1,7 +1,7 @@
 <template>
   <div>
-    {{ emitedText.value }}
-    <FormInputText label="Name" @emitText="emitText" />
+    {{ emitedText }}
+    <FormInputText v-model="emitedText" />
   </div>
 </template>
 
@@ -14,10 +14,8 @@ export default {
   components: { FormInputText },
   setup() {
     const emitedText = ref("aaa");
-    const emitText = (text) => {
-      emitedText.value = text;
-    };
-    return { emitedText, emitText };
+
+    return { emitedText };
   },
 };
 </script>
