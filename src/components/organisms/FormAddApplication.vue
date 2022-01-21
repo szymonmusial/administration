@@ -96,7 +96,8 @@ import { computed } from "@vue/runtime-core";
 import { useStore } from "vuex";
 
 import { useVuelidate } from "@vuelidate/core";
-import { required, maxLength, helpers } from "@vuelidate/validators";
+import { required } from "@vuelidate/validators";
+import { referenceRule, nameRule } from "../../vuelidateForm/businessRules.js";
 
 export default {
   name: "BasicApplicationForm",
@@ -104,37 +105,36 @@ export default {
   setup() {
     //store
     const store = useStore();
+
     //Priority
     const priorityOptions = ref([
       { name: "Yes", code: "true" },
       { name: "No", code: "false" },
     ]);
-    const priority = ref(false);
+
     //Application Type
     const applicationTypeOptions = ref([
       { name: "Bank Pomysłów", id: 0 },
       { name: "Wniosek Ogólny", id: 1 },
       { name: "Zgłoszenie problemów", id: 2 },
     ]);
-    const applicationType = ref("");
+
     //Person
     const personOptions = ref([
       { name: "Szymon Musiał", id: 0 },
       { name: "Kuba Musiał", id: 1 },
     ]);
-    const person = ref("");
-    person.value = "Szymon Musiał";
-    const personIsEditable = ref(false);
+
     //Department
     const departmentOptions = computed(() => {
       return store.getters.getDepartments;
     });
-    const department = ref("");
+
     //Filing Date
-    const filingDate = ref("");
+
     const dateToday = ref(new Date("2022-01-20"));
     //Event Date
-    const eventDate = ref("");
+
     const eventDateActive = computed(() => {
       if (form.filingDate !== "") {
         return true;
@@ -143,11 +143,7 @@ export default {
       }
     });
     //Vuelidate
-    const referenceRegex = helpers.regex(/^\d{5}-\d{2}$/);
-    const regexWithMessage = helpers.withMessage(
-      "Reference should be on example 00000-00",
-      referenceRegex
-    );
+
     const form = reactive({
       name: "",
       reference: "",
@@ -159,21 +155,20 @@ export default {
       eventDate: "",
     });
     const rules = {
-      name: { required, maxLength: maxLength(30) },
-      reference: { required, regexWithMessage },
+      name: { required, nameRule },
+      reference: { required, referenceRule },
       priority: { required },
       applicationType: { required },
       department: { required },
       filingDate: { required },
       eventDate: { required },
     };
-
+    form.person = "Szymon Musiał";
+    const personIsEditable = ref(false);
     const v$ = useVuelidate(rules, form);
 
     const submitted = ref(false);
     const handleSubmit = (isFormValid) => {
-      // const isValid = await v$.value.$validate();
-      // console.log(isValid);
       submitted.value = true;
 
       if (!isFormValid) {
@@ -182,17 +177,11 @@ export default {
     };
     return {
       priorityOptions,
-      priority,
-      applicationType,
       applicationTypeOptions,
       personOptions,
-      person,
       personIsEditable,
       departmentOptions,
-      department,
-      filingDate,
       dateToday,
-      eventDate,
       eventDateActive,
       form,
       v$,
