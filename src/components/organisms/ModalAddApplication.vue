@@ -12,6 +12,7 @@
 import Modal from "../atoms/Modal.vue";
 import FormVuelidateApplication from "./FormVuelidateApplication.vue";
 import { useStore } from "vuex";
+import ownToast from "../../composables/ownToast";
 
 export default {
   name: "AddApplicationDialog",
@@ -22,6 +23,8 @@ export default {
   setup(props, { emit }) {
     const closeModal = () => emit("closeModal");
     const store = useStore();
+    const { showSuccessToast, showErrorToast } = ownToast();
+
     const send = (data) => {
       const application = {
         name: data.name,
@@ -33,7 +36,15 @@ export default {
         filing_date: data.filingDate,
         event_date: data.eventDate,
       };
-      store.dispatch("addApplication", application);
+      store
+        .dispatch("addApplication", application)
+        .then(() => {
+          showSuccessToast("Success", "Dodano Wniosek!");
+          closeModal();
+        })
+        .catch(() => {
+          showErrorToast("Error", "Nie udało się dodać wniosku");
+        });
       console.log(application);
     };
     return {
