@@ -44,6 +44,7 @@
         placeholder="Select a Application Type"
         label="Application Type"
         optionValue="name"
+        :disabled="!personIsEditable"
       />
       <!-- Department -->
       <div class="p-field p-col-12 p-md-6">
