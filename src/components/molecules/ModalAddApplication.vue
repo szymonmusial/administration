@@ -1,7 +1,6 @@
 <template>
   <Modal
     @closeModal="closeModal"
-    v-if="modal == 'add'"
     title="Add New Applications"
     class="p-fluid p-formgrid p-grid basic-application-form"
   >
@@ -11,9 +10,7 @@
 
 <script>
 import Modal from "../atoms/Modal.vue";
-import { useStore } from "vuex";
-import { computed } from "@vue/runtime-core";
-import BasicApplicationForm from "./FormAddApplication.vue";
+import BasicApplicationForm from "../organisms/FormAddApplication.vue";
 
 export default {
   name: "AddApplicationDialog",
@@ -21,16 +18,10 @@ export default {
     Modal,
     BasicApplicationForm,
   },
-  setup() {
-    const store = useStore();
-    const modal = computed(() => store.getters.getModal);
-    const closeModal = () => {
-      store.commit("setModal", "close");
-    };
-
+  setup(props, { emit }) {
+    const closeModal = () => emit("closeModal");
     return {
       closeModal,
-      modal,
     };
   },
 };

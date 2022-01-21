@@ -110,7 +110,7 @@ export default {
     const personIsEditable = ref(false);
     //Department
     const departmentOptions = computed(() => {
-      store.getters("getDepartments");
+      return store.getters.getDepartments;
     });
     const department = ref("");
     //Filing Date
