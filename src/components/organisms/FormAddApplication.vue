@@ -66,15 +66,15 @@
         manualInput="false"
       />
       <!-- Event Date -->
-      <div class="p-field p-col-12 p-md-6">
-        <label for="person">Event Date </label>
-        <Calendar
-          v-model="form.eventDate"
-          manualInput="false"
-          :disabled="!eventDateActive"
-          :maxDate="form.filingDate"
-        />
-      </div>
+      <CalendarForm
+        v-model="form.eventDate"
+        :maxDate="form.filingDate"
+        :input="v$.eventDate"
+        :submitted="submitted"
+        label="Event Date"
+        manualInput="false"
+        :disabled="!eventDateActive"
+      />
       <!-- Submit -->
       <Button type="submit" label="Submit" class="mt-2" />
     </form>
@@ -82,7 +82,6 @@
 </template>
 
 <script>
-import Calendar from "primevue/calendar";
 import Button from "primevue/button";
 import InputFormText from "../molecules/InputFormText.vue";
 import DropdownForm from "../molecules/DropdownForm.vue";
@@ -98,7 +97,7 @@ import { referenceRule, nameRule } from "../../vuelidateForm/businessRules.js";
 
 export default {
   name: "BasicApplicationForm",
-  components: { Calendar, Button, InputFormText, DropdownForm, CalendarForm },
+  components: { Button, InputFormText, DropdownForm, CalendarForm },
   setup() {
     //store
     const store = useStore();
@@ -127,10 +126,8 @@ export default {
       return store.getters.getDepartments;
     });
 
-    //Filing Date
-
+    //Today Date
     const dateToday = ref(new Date("2022-01-20"));
-    //Event Date
 
     const eventDateActive = computed(() => {
       if (form.filingDate !== "") {
