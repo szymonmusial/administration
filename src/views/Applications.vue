@@ -1,18 +1,18 @@
 <template>
   <div id="Applications">
-    <AddApplicationDialog />
+    <ModalAddApplication />
     <ApplicationsTable />
-    <AddNewApplication />
+    <ButtonNewApplication />
   </div>
 </template>
 
 <script>
 import ApplicationsTable from "../components/organisms/ApplicationsTable.vue";
-import AddNewApplication from "../components/organisms/ButtonNewApplication.vue";
-import AddApplicationDialog from "../components/organisms/ModalAddApplication.vue";
+import ButtonNewApplication from "../components/organisms/ButtonNewApplication.vue";
+import ModalAddApplication from "../components/organisms/ModalAddApplication.vue";
 
 export default {
   name: "Applications",
-  components: { ApplicationsTable, AddNewApplication, AddApplicationDialog },
+  components: { ApplicationsTable, ButtonNewApplication, ModalAddApplication },
 };
 </script>
