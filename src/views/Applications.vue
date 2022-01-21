@@ -9,7 +9,7 @@
 <script>
 import ApplicationsTable from "../components/organisms/ApplicationsTable.vue";
 import ButtonNewApplication from "../components/organisms/ButtonNewApplication.vue";
-import ModalAddApplication from "../components/molecules/ModalAddApplication.vue";
+import ModalAddApplication from "../components/organisms/ModalAddApplication.vue";
 import { useStore } from "vuex";
 import { computed } from "@vue/runtime-core";
 

@@ -96,9 +96,9 @@ import { required } from "@vuelidate/validators";
 import { referenceRule, nameRule } from "../../vuelidateForm/businessRules.js";
 
 export default {
-  name: "BasicApplicationForm",
+  name: "FormVuelidateApplication",
   components: { Button, InputFormText, DropdownForm, CalendarForm },
-  setup() {
+  setup(props, { emit }) {
     //store
     const store = useStore();
 
@@ -165,9 +165,8 @@ export default {
     const submitted = ref(false);
     const handleSubmit = (isFormValid) => {
       submitted.value = true;
-
-      if (!isFormValid) {
-        return;
+      if (isFormValid) {
+        emit("send", form);
       }
     };
     return {
