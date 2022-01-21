@@ -11,6 +11,7 @@
 <script>
 import Modal from "../atoms/Modal.vue";
 import FormVuelidateApplication from "./FormVuelidateApplication.vue";
+import { useStore } from "vuex";
 
 export default {
   name: "AddApplicationDialog",
@@ -20,6 +21,7 @@ export default {
   },
   setup(props, { emit }) {
     const closeModal = () => emit("closeModal");
+    const store = useStore();
     const send = (data) => {
       const application = {
         name: data.name,
@@ -31,7 +33,7 @@ export default {
         filing_date: data.filingDate,
         event_date: data.eventDate,
       };
-
+      store.dispatch("addApplication", application);
       console.log(application);
     };
     return {

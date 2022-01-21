@@ -11,11 +11,19 @@ const applications = {
     setApplications(state, applications) {
       state.applications = applications;
     },
+    addApplication(state, application) {
+      state.applications.push(application);
+    },
   },
   actions: {
     setApplications(context) {
       return axiosClient.get("applications").then((response) => {
         context.commit("setApplications", response.data);
+      });
+    },
+    addApplication: (context, application) => {
+      return axiosClient.post("applications", application).then((response) => {
+        context.commit("addApplication", response.data);
       });
     },
   },
