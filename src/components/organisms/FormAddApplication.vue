@@ -96,7 +96,7 @@ import { computed } from "@vue/runtime-core";
 import { useStore } from "vuex";
 
 import { useVuelidate } from "@vuelidate/core";
-import { required, maxLength } from "@vuelidate/validators";
+import { required, maxLength, helpers } from "@vuelidate/validators";
 
 export default {
   name: "BasicApplicationForm",
@@ -143,7 +143,11 @@ export default {
       }
     });
     //Vuelidate
-
+    const referenceRegex = helpers.regex(/^\d{5}-\d{2}$/);
+    const regexWithMessage = helpers.withMessage(
+      "Reference should be on example 00000-00",
+      referenceRegex
+    );
     const form = reactive({
       name: "",
       reference: "",
@@ -154,21 +158,22 @@ export default {
       filingDate: "",
       eventDate: "",
     });
-    const rules = computed(() => {
-      return {
-        name: { required, maxLength: maxLength(10) },
-        reference: { required },
-        priority: { required },
-        applicationType: { required },
-        department: { required },
-        filingDate: { required },
-        eventDate: { required },
-      };
-    });
+    const rules = {
+      name: { required, maxLength: maxLength(30) },
+      reference: { required, regexWithMessage },
+      priority: { required },
+      applicationType: { required },
+      department: { required },
+      filingDate: { required },
+      eventDate: { required },
+    };
+
     const v$ = useVuelidate(rules, form);
 
     const submitted = ref(false);
     const handleSubmit = (isFormValid) => {
+      // const isValid = await v$.value.$validate();
+      // console.log(isValid);
       submitted.value = true;
 
       if (!isFormValid) {
