@@ -15,17 +15,14 @@
         v-model="form.reference"
         label="Reference"
       />
-      <!-- Priority -->
-      <div class="p-field p-col-12 p-md-6">
-        <label for="priority">Priority</label>
-        <Dropdown
-          :options="priorityOptions"
-          v-model="form.priority"
-          optionLabel="name"
-          optionValue="code"
-          placeholder="Is Priority"
-        />
-      </div>
+      <DropdownForm
+        :input="v$.priority"
+        :submitted="submitted"
+        v-model="form.priority"
+        :options="priorityOptions"
+        placeholder="Is Priority"
+        label="Priority"
+      />
       <!-- Type -->
       <div class="p-field p-col-12 p-md-6">
         <label for="applicationType">Application Type</label>
@@ -90,6 +87,7 @@ import Dropdown from "primevue/dropdown";
 import Calendar from "primevue/calendar";
 import Button from "primevue/button";
 import InputFormText from "../molecules/InputFormText.vue";
+import DropdownForm from "../molecules/DropdownForm.vue";
 
 import { reactive, ref } from "@vue/reactivity";
 import { computed } from "@vue/runtime-core";
@@ -101,7 +99,7 @@ import { referenceRule, nameRule } from "../../vuelidateForm/businessRules.js";
 
 export default {
   name: "BasicApplicationForm",
-  components: { Dropdown, Calendar, Button, InputFormText },
+  components: { Dropdown, Calendar, Button, InputFormText, DropdownForm },
   setup() {
     //store
     const store = useStore();
