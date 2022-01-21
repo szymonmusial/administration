@@ -70,6 +70,8 @@
         :maxDate="filingDate"
       />
     </div>
+    <!-- Submit -->
+    <large-button label="Add New Applications" class="button--submit" />
   </div>
 </template>
 
@@ -80,10 +82,11 @@ import Calendar from "primevue/calendar";
 import { ref } from "@vue/reactivity";
 import { computed } from "@vue/runtime-core";
 import { useStore } from "vuex";
+import LargeButton from "../atoms/LargeButton.vue";
 
 export default {
   name: "BasicApplicationForm",
-  components: { InputText, Dropdown, Calendar },
+  components: { InputText, Dropdown, Calendar, LargeButton },
   setup() {
     //store
     const store = useStore();
@@ -150,6 +153,7 @@ export default {
 }
 .p-inputtext,
 .p-dropdown,
+.button--submit,
 .p-calendar {
   margin-top: 10px !important;
 }
