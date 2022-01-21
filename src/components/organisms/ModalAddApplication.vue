@@ -13,7 +13,15 @@ import Modal from "../atoms/Modal.vue";
 import FormVuelidateApplication from "./FormVuelidateApplication.vue";
 import { useStore } from "vuex";
 import ownToast from "../../composables/ownToast";
+/*
+To do:
+ 1. add spiner when data is adding
+ 2. add spiner when data is loading for example when departments is loading from api
+ 3. add prop with data
+ 4. check your voice message for u :)
 
+
+*/
 export default {
   name: "AddApplicationDialog",
   components: {
