@@ -41,22 +41,21 @@
         :submitted="submitted"
         v-model="form.person"
         :options="personOptions"
-        placeholder="Select a Application Type"
-        label="Application Type"
+        placeholder="Select a Person"
+        label="Person"
         optionValue="name"
         :disabled="!personIsEditable"
       />
       <!-- Department -->
-      <div class="p-field p-col-12 p-md-6">
-        <label for="person">Department </label>
-        <Dropdown
-          :options="departmentOptions"
-          v-model="form.department"
-          optionLabel="name"
-          optionValue="name"
-          placeholder="Select a Department"
-        />
-      </div>
+      <DropdownForm
+        :input="v$.department"
+        :submitted="submitted"
+        v-model="form.department"
+        :options="departmentOptions"
+        placeholder="Select Department"
+        label="Department"
+        optionValue="name"
+      />
       <!-- Filing Date -->
       <div class="p-field p-col-12 p-md-6">
         <label for="person">Filing Date </label>
@@ -83,7 +82,6 @@
 </template>
 
 <script>
-import Dropdown from "primevue/dropdown";
 import Calendar from "primevue/calendar";
 import Button from "primevue/button";
 import InputFormText from "../molecules/InputFormText.vue";
@@ -99,7 +97,7 @@ import { referenceRule, nameRule } from "../../vuelidateForm/businessRules.js";
 
 export default {
   name: "BasicApplicationForm",
-  components: { Dropdown, Calendar, Button, InputFormText, DropdownForm },
+  components: { Calendar, Button, InputFormText, DropdownForm },
   setup() {
     //store
     const store = useStore();
