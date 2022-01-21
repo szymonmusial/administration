@@ -7,8 +7,8 @@
       :modelValue="modelValue"
       @update:modelValue="emitInput"
       :class="{ 'p-invalid': showError }"
-      optionLabel="name"
-      optionValue="code"
+      :optionLabel="optionLabel"
+      :optionValue="optionValue"
       :placeholder="placeholder"
     />
 
