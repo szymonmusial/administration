@@ -1,5 +1,5 @@
 <template>
-  <Dialog visible="true" @update:visible="closeModal">
+  <Dialog visible="true" @update:visible="closeModal" class="form__dialog">
     <template #header>
       <h3>{{ title }}</h3>
     </template>
@@ -21,4 +21,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.form__dialog {
+  min-width: 28% !important;
+  max-width: 100%;
+}
+</style>

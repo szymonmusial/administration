@@ -26,9 +26,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.p-dialog .p-dialog-header {
-  padding: 0.5rem 1.5rem;
-}
-</style>
