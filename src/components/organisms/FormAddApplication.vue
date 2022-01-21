@@ -57,14 +57,14 @@
         optionValue="name"
       />
       <!-- Filing Date -->
-      <div class="p-field p-col-12 p-md-6">
-        <label for="person">Filing Date </label>
-        <Calendar
-          v-model="form.filingDate"
-          :maxDate="dateToday"
-          manualInput="false"
-        />
-      </div>
+      <CalendarForm
+        v-model="form.filingDate"
+        :maxDate="dateToday"
+        :input="v$.filingDate"
+        :submitted="submitted"
+        label="Filing Date"
+        manualInput="false"
+      />
       <!-- Event Date -->
       <div class="p-field p-col-12 p-md-6">
         <label for="person">Event Date </label>
@@ -86,6 +86,7 @@ import Calendar from "primevue/calendar";
 import Button from "primevue/button";
 import InputFormText from "../molecules/InputFormText.vue";
 import DropdownForm from "../molecules/DropdownForm.vue";
+import CalendarForm from "../molecules/CalendarForm.vue";
 
 import { reactive, ref } from "@vue/reactivity";
 import { computed } from "@vue/runtime-core";
@@ -97,7 +98,7 @@ import { referenceRule, nameRule } from "../../vuelidateForm/businessRules.js";
 
 export default {
   name: "BasicApplicationForm",
-  components: { Calendar, Button, InputFormText, DropdownForm },
+  components: { Calendar, Button, InputFormText, DropdownForm, CalendarForm },
   setup() {
     //store
     const store = useStore();
