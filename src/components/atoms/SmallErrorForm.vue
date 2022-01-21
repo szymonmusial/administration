@@ -15,7 +15,13 @@ export default {
 
   setup(props) {
     const message = computed(() => {
-      return props.input.required.$message.replace("Value", props.label);
+      const errorArray = props.input.$silentErrors;
+
+      let messages = "";
+      for (let index = 0; index < errorArray.length; index++) {
+        messages = messages + errorArray[index].$message;
+      }
+      return messages;
     });
 
     return { message };

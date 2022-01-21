@@ -9,10 +9,12 @@
         label="Name"
       />
       <!-- Reference -->
-      <div class="p-field p-col-12 p-md-6">
-        <label for="reference">Reference</label>
-        <InputText id="reference" type="text" v-model="form.reference" />
-      </div>
+      <InputFormText
+        :input="v$.reference"
+        :submitted="submitted"
+        v-model="form.reference"
+        label="Reference"
+      />
       <!-- Priority -->
       <div class="p-field p-col-12 p-md-6">
         <label for="priority">Priority</label>
@@ -84,7 +86,6 @@
 </template>
 
 <script>
-import InputText from "primevue/inputtext";
 import Dropdown from "primevue/dropdown";
 import Calendar from "primevue/calendar";
 import Button from "primevue/button";
@@ -95,11 +96,11 @@ import { computed } from "@vue/runtime-core";
 import { useStore } from "vuex";
 
 import { useVuelidate } from "@vuelidate/core";
-import { required } from "@vuelidate/validators";
+import { required, maxLength } from "@vuelidate/validators";
 
 export default {
   name: "BasicApplicationForm",
-  components: { InputText, Dropdown, Calendar, Button, InputFormText },
+  components: { Dropdown, Calendar, Button, InputFormText },
   setup() {
     //store
     const store = useStore();
@@ -155,7 +156,7 @@ export default {
     });
     const rules = computed(() => {
       return {
-        name: { required },
+        name: { required, maxLength: maxLength(10) },
         reference: { required },
         priority: { required },
         applicationType: { required },
