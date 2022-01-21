@@ -2,26 +2,12 @@
   <div class="p-fluid p-formgrid p-grid basic-application-form">
     <form @submit.prevent="handleSubmit(!v$.$invalid)" class="p-fluid">
       <!-- Name -->
-      <div v-if="v$.reference.$invalid && submitted">
-        Name field has an error.
-      </div>
-      <div class="p-field p-col-12 p-md-6">
-        <label for="name" :class="{ 'p-error': v$.name.$invalid && submitted }"
-          >Name</label
-        >
-
-        <InputText
-          id="name"
-          type="text"
-          v-model="form.name"
-          :class="{ 'p-invalid': v$.name.$invalid && submitted }"
-        />
-        <small
-          v-if="(v$.name.$invalid && submitted) || v$.name.$pending.$response"
-          class="p-error"
-          >{{ v$.name.required.$message.replace("Value", "Name") }}</small
-        >
-      </div>
+      <InputFormText
+        :input="v$.name"
+        :submitted="submitted"
+        v-model="form.name"
+        label="Name"
+      />
       <!-- Reference -->
       <div class="p-field p-col-12 p-md-6">
         <label for="reference">Reference</label>
@@ -102,6 +88,7 @@ import InputText from "primevue/inputtext";
 import Dropdown from "primevue/dropdown";
 import Calendar from "primevue/calendar";
 import Button from "primevue/button";
+import InputFormText from "../molecules/InputFormText.vue";
 
 import { reactive, ref } from "@vue/reactivity";
 import { computed } from "@vue/runtime-core";
@@ -112,7 +99,7 @@ import { required } from "@vuelidate/validators";
 
 export default {
   name: "BasicApplicationForm",
-  components: { InputText, Dropdown, Calendar, Button },
+  components: { InputText, Dropdown, Calendar, Button, InputFormText },
   setup() {
     //store
     const store = useStore();

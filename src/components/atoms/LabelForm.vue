@@ -1,0 +1,19 @@
+<template>
+  <label :class="{ 'p-error': showError }" class="form__label">{{
+    label
+  }}</label>
+</template>
+
+<script>
+export default {
+  name: "LabelForm",
+  props: ["showError", "label"],
+};
+</script>
+
+<style>
+.form__label {
+  margin-bottom: 10px !important;
+  display: block;
+}
+</style>
