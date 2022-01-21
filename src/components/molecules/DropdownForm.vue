@@ -40,7 +40,7 @@ export default {
     },
     optionValue: {
       type: String,
-      default: "code",
+      default: "name",
     },
   },
   setup(props, { emit }) {

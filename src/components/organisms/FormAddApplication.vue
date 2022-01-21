@@ -15,6 +15,7 @@
         v-model="form.reference"
         label="Reference"
       />
+      <!-- Priority -->
       <DropdownForm
         :input="v$.priority"
         :submitted="submitted"
@@ -22,30 +23,28 @@
         :options="priorityOptions"
         placeholder="Is Priority"
         label="Priority"
+        optionValue="code"
       />
       <!-- Type -->
-      <div class="p-field p-col-12 p-md-6">
-        <label for="applicationType">Application Type</label>
-        <Dropdown
-          :options="applicationTypeOptions"
-          v-model="form.applicationType"
-          optionLabel="name"
-          optionValue="name"
-          placeholder="Select a Application Type"
-        />
-      </div>
+      <DropdownForm
+        :input="v$.type"
+        :submitted="submitted"
+        v-model="form.type"
+        :options="applicationTypeOptions"
+        placeholder="Select a Application Type"
+        label="Application Type"
+        optionValue="name"
+      />
       <!-- Person -->
-      <div class="p-field p-col-12 p-md-6">
-        <label for="person">Person </label>
-        <Dropdown
-          :options="personOptions"
-          v-model="form.person"
-          optionLabel="name"
-          optionValue="name"
-          placeholder="Select Person"
-          :disabled="!personIsEditable"
-        />
-      </div>
+      <DropdownForm
+        :input="v$.person"
+        :submitted="submitted"
+        v-model="form.person"
+        :options="personOptions"
+        placeholder="Select a Application Type"
+        label="Application Type"
+        optionValue="name"
+      />
       <!-- Department -->
       <div class="p-field p-col-12 p-md-6">
         <label for="person">Department </label>
@@ -146,7 +145,7 @@ export default {
       name: "",
       reference: "",
       priority: false,
-      applicationType: "",
+      type: "",
       person: "",
       department: "",
       filingDate: "",
@@ -156,7 +155,8 @@ export default {
       name: { required, nameRule },
       reference: { required, referenceRule },
       priority: { required },
-      applicationType: { required },
+      person: { required },
+      type: { required },
       department: { required },
       filingDate: { required },
       eventDate: { required },
