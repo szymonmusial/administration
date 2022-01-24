@@ -50,6 +50,7 @@
         optionValue="name"
         :disabled="!personIsEditable"
         v-if="isActiveField('person')"
+        :loading="!personLoading"
       />
       <!-- Person list -->
       <MultiSelectForm
@@ -61,6 +62,7 @@
         label="Subscription List"
         optionValue="name"
         v-if="isActiveField('subscriptionList')"
+        :loading="!personLoading"
       />
       <!-- Department -->
       <DropdownForm
@@ -138,9 +140,11 @@ export default {
       return store.getters.getApplicationTypes;
     });
 
-    //Person
+    const personLoading = ref(false);
     const personOptions = computed(() => {
-      store.dispatch("setUsers");
+      store.dispatch("setUsers").then(() => {
+        personLoading.value = true;
+      });
       return store.getters.getUsers;
     });
 
@@ -205,6 +209,7 @@ export default {
       handleSubmit,
       submitted,
       isActiveField,
+      personLoading,
     };
   },
 };

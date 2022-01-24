@@ -11,6 +11,7 @@
       :optionValue="optionValue"
       :placeholder="placeholder"
       :disabled="disabled"
+      :loading="loading"
     />
 
     <SmallErrorForm :input="input" :showError="showError" :label="label" />
@@ -36,6 +37,7 @@ export default {
     options: Object,
     placeholder: String,
     disabled: Boolean,
+    loading: Boolean,
     optionLabel: {
       type: String,
       default: "name",
