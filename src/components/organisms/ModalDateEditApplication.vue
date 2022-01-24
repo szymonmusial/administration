@@ -15,7 +15,6 @@ import { useStore } from "vuex";
 import ownToast from "../../composables/ownToast";
 
 import { required } from "@vuelidate/validators";
-import { referenceRule, nameRule } from "../../vuelidateForm/businessRules.js";
 import { reactive } from "@vue/reactivity";
 import { computed } from "@vue/runtime-core";
 
@@ -31,9 +30,8 @@ export default {
     const { showSuccessToast, showErrorToast } = ownToast();
 
     const rules = reactive({
-      name: { required, nameRule },
-      reference: { required, referenceRule },
-      priority: { required },
+      filingDate: { required },
+      eventDate: { required },
     });
     const applicationEditingId = computed(
       () => store.getters.getEditingApplicationId
@@ -44,9 +42,8 @@ export default {
     );
 
     const form = reactive({
-      name: dataFromApplication.value.name,
-      reference: dataFromApplication.value.reference_number,
-      priority: dataFromApplication.value.priority,
+      filingDate: dataFromApplication.value.filing_date,
+      eventDate: dataFromApplication.value.event_date,
     });
 
     console.log(form);
@@ -55,10 +52,10 @@ export default {
       store.commit("setLoadingStatus", false);
       const application = {
         id: applicationEditingId.value,
-        name: data.name,
-        reference_number: data.reference,
-        priority: data.priority,
+        filing_date: data.filingDate,
+        event_date: data.eventDate,
       };
+      debugger;
       store
         .dispatch("editApplication", application)
         .then(() => {

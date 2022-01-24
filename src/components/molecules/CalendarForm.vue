@@ -5,11 +5,11 @@
 
     <Calendar
       :class="{ 'p-invalid': showError }"
-      :modelValue="modelValue"
+      :modelValue="stringToDate(modelValue)"
       @update:modelValue="emitInput"
-      :maxDate="maxDate"
+      :maxDate="stringToDate(maxDate)"
       :manualInput="manualInput"
-      :minDate="minDate"
+      :minDate="stringToDate(minDate)"
       :disabled="disabled"
     />
 
@@ -43,7 +43,9 @@ export default {
       emit("update:modelValue", event);
       console.log(event);
     };
-
+    const stringToDate = (date) => {
+      return new Date(date);
+    };
     const showError = computed(() => {
       if (props.input.$invalid && props.submitted) {
         return true;
@@ -52,7 +54,7 @@ export default {
       }
     });
 
-    return { emitInput, showError };
+    return { emitInput, showError, stringToDate };
   },
 };
 </script>

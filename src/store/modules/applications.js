@@ -41,6 +41,7 @@ const applications = {
       });
     },
     editApplication: (context, application) => {
+      console.log(application);
       return axiosClient
         .patch("applications/" + application.id, application)
         .then(() => {
