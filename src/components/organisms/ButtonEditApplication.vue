@@ -3,6 +3,8 @@
 </template>
 
 <script>
+// TO DO: replace with one button for add and other edits
+
 import EditButton from "../atoms/EditButton.vue";
 import { useStore } from "vuex";
 

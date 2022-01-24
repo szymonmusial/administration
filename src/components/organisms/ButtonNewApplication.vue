@@ -14,6 +14,7 @@
 </template>
 
 <script>
+// TO DO: replace with one button for add and other edits
 import { ref } from "@vue/reactivity";
 import LargeButton from "../atoms/LargeButton.vue";
 import { useStore } from "vuex";
