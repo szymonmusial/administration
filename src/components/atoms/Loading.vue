@@ -27,7 +27,7 @@ export default {
   height: 100vh;
   position: fixed;
   background: #0b213f;
-  z-index: 10;
+  z-index: 1000000;
 }
 </style>
 >

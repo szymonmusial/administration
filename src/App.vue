@@ -9,7 +9,7 @@
 <script>
 import Toast from "primevue/toast";
 import Loading from "./components/atoms/Loading.vue";
-import { onMounted, ref } from "@vue/runtime-core";
+import { computed, onMounted } from "@vue/runtime-core";
 import { useStore } from "vuex";
 import ownToast from "./composables/ownToast";
 
@@ -19,13 +19,13 @@ export default {
   setup() {
     const store = useStore();
     const { showErrorToast } = ownToast();
-    const loadingStatus = ref(false);
+    const loadingStatus = computed(() => store.getters.getLoadingStatus);
 
     onMounted(() => {
       store
         .dispatch("setApplications")
         .then(() => {
-          loadingStatus.value = true;
+          store.commit("setLoadingStatus", true);
         })
         .catch(() => {
           showErrorToast("Critical Error", "Application failed to load");

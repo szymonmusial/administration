@@ -34,6 +34,7 @@ export default {
     const { showSuccessToast, showErrorToast } = ownToast();
 
     const send = (data) => {
+      store.commit("setLoadingStatus", false);
       const application = {
         name: data.name,
         reference_number: data.reference,
@@ -52,8 +53,8 @@ export default {
         })
         .catch(() => {
           showErrorToast("Error", "Nie udało się dodać wniosku");
-        });
-      console.log(application);
+        })
+        .finally(() => store.commit("setLoadingStatus", true));
     };
     return {
       closeModal,
