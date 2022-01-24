@@ -20,7 +20,7 @@ import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 
 export default {
-  name: "AddNewApplication",
+  name: "ButtonNewApplication",
   components: { LargeButton },
   setup() {
     const router = useRouter();

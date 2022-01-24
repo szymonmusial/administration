@@ -24,7 +24,7 @@ import { referenceRule, nameRule } from "../../vuelidateForm/businessRules.js";
 import { reactive } from "@vue/reactivity";
 
 export default {
-  name: "AddApplicationDialog",
+  name: "ModalAddApplication",
   components: {
     Modal,
     FormVuelidateApplication,

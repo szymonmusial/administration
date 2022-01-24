@@ -25,7 +25,7 @@ import { computed } from "@vue/runtime-core";
 import SmallErrorForm from "../atoms/SmallErrorForm.vue";
 
 export default {
-  name: "InputFormText",
+  name: "CalendarForm",
   components: { LabelForm, SmallErrorForm, Calendar },
   emits: ["emitInput"],
   props: [

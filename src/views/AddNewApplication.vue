@@ -20,7 +20,7 @@ import { reactive } from "@vue/reactivity";
 import { useRouter } from "vue-router";
 
 export default {
-  name: "AddApplicationDialog",
+  name: "AddNewApplication",
   components: {
     FormVuelidateApplication,
   },

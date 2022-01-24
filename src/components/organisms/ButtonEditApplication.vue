@@ -7,7 +7,7 @@ import EditButton from "../atoms/EditButton.vue";
 import { useStore } from "vuex";
 
 export default {
-  name: "EditApplication",
+  name: "ButtonEditApplication",
   components: { EditButton },
   props: ["id", "label", "editType"],
   setup(props) {

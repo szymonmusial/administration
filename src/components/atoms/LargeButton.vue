@@ -10,7 +10,7 @@
 import Button from "primevue/button";
 
 export default {
-  name: "AddNewApplication",
+  name: "LargeButton",
   props: ["label", "loading"],
   components: { Button },
 };

@@ -24,7 +24,7 @@ import { reactive } from "@vue/reactivity";
 import { computed } from "@vue/runtime-core";
 
 export default {
-  name: "ModalDateEditApplication",
+  name: "ModalPersonEdit",
   components: {
     Modal,
     FormVuelidateApplication,
