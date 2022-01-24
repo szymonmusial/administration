@@ -4,7 +4,7 @@
     title="Add New Applications"
     class="p-fluid p-formgrid p-grid basic-application-form"
   >
-    <FormVuelidateApplication @send="send" :rules="rules" />
+    <FormVuelidateApplication @send="send" :rules="rules" :fields="form" />
   </Modal>
 </template>
 
@@ -48,6 +48,17 @@ export default {
       eventDate: { required },
     });
 
+    const form = reactive({
+      name: "Test props",
+      reference: "",
+      priority: false,
+      type: "",
+      person: "",
+      department: "",
+      filingDate: "",
+      eventDate: "",
+    });
+
     const send = (data) => {
       store.commit("setLoadingStatus", false);
       const application = {
@@ -75,6 +86,7 @@ export default {
       closeModal,
       send,
       rules,
+      form,
     };
   },
 };

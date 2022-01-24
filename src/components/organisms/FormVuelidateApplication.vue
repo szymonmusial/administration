@@ -104,7 +104,7 @@ import { useVuelidate } from "@vuelidate/core";
 export default {
   name: "FormVuelidateApplication",
   components: { Button, InputFormText, DropdownForm, CalendarForm },
-  props: ["rules"],
+  props: ["rules", "fields"],
   setup(props, { emit }) {
     //store
     const store = useStore();
@@ -150,15 +150,16 @@ export default {
     };
 
     //Vuelidate
+
     const form = reactive({
-      name: "",
-      reference: "",
-      priority: false,
-      type: "",
-      person: "",
-      department: "",
-      filingDate: "",
-      eventDate: "",
+      name: props.fields.name,
+      reference: props.fields.reference,
+      priority: props.fields.priority,
+      type: props.fields.type,
+      person: props.fields.person,
+      department: props.fields.department,
+      filingDate: props.fields.filingDate,
+      eventDate: props.fields.eventDate,
     });
 
     form.person = "Szymon Musiał";
