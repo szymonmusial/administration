@@ -1,7 +1,7 @@
 <template>
   <div class="priority-column">
     <WarningButton
-      v-if="priority"
+      v-if="priority === 'true'"
       label="Yes"
       class="warning-button"
     ></WarningButton>

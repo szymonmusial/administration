@@ -70,11 +70,11 @@ export default {
       store
         .dispatch("editApplication", application)
         .then(() => {
-          showSuccessToast("Success", "Dodano Wniosek!");
+          showSuccessToast("Success", "Zmodyfikowane zadanie!");
           closeModal();
         })
         .catch(() => {
-          showErrorToast("Error", "Nie udało się dodać wniosku");
+          showErrorToast("Error", "Nie udało się zmodyfikować zadania");
         })
         .finally(() => store.commit("setLoadingStatus", true));
     };
