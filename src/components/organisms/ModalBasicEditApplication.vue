@@ -18,15 +18,7 @@ import { required } from "@vuelidate/validators";
 import { referenceRule, nameRule } from "../../vuelidateForm/businessRules.js";
 import { reactive } from "@vue/reactivity";
 import { computed } from "@vue/runtime-core";
-/*
-To do:
- 1. add spiner when data is adding
- 2. add spiner when data is loading for example when departments is loading from api
- 3. add prop with data
- 4. check your voice message for u :)
 
-
-*/
 export default {
   name: "ModalBasicEditApplication",
   components: {
