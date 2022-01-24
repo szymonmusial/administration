@@ -5,6 +5,10 @@
       v-if="modal == 'basicEdit'"
       @closeModal="closeModal"
     />
+    <modal-date-edit-application
+      v-if="modal == 'dateEdit'"
+      @closeModal="closeModal"
+    />
     <ApplicationsTable />
     <ButtonNewApplication />
   </div>
@@ -17,6 +21,7 @@ import ModalAddApplication from "../components/organisms/ModalAddApplication.vue
 import { useStore } from "vuex";
 import { computed } from "@vue/runtime-core";
 import ModalBasicEditApplication from "../components/organisms/ModalBasicEditApplication.vue";
+import ModalDateEditApplication from "../components/organisms/ModalDateEditApplication.vue";
 
 export default {
   name: "Applications",
@@ -25,6 +30,7 @@ export default {
     ButtonNewApplication,
     ModalAddApplication,
     ModalBasicEditApplication,
+    ModalDateEditApplication,
   },
   setup() {
     const store = useStore();

@@ -1,5 +1,5 @@
 <template>
-  <EditButton @click="editApplication" />
+  <EditButton @click="editApplication" :label="label" />
 </template>
 
 <script>
@@ -9,11 +9,11 @@ import { useStore } from "vuex";
 export default {
   name: "EditApplication",
   components: { EditButton },
-  props: ["id"],
+  props: ["id", "label", "editType"],
   setup(props) {
     const store = useStore();
     const editApplication = () => {
-      store.commit("setModal", "basicEdit");
+      store.commit("setModal", props.editType);
       store.commit("setEditingApplicationId", props.id);
     };
 

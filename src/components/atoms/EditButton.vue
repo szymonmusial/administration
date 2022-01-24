@@ -1,5 +1,5 @@
 <template>
-  <Button label="Edit" class="button-edit" :loading="loading" />
+  <Button :label="label" class="button-edit" :loading="loading" />
 </template>
 
 <script>
@@ -7,7 +7,7 @@ import Button from "primevue/button";
 export default {
   name: "Edit Button",
   components: { Button },
-  props: ["loading"],
+  props: ["loading", "label"],
 };
 </script>
 <style scoped>

@@ -31,7 +31,19 @@
       </Column>
       <Column>
         <template #body="slotProps">
-          <EditApplication :id="slotProps.data.id" /></template
+          <EditApplication
+            :id="slotProps.data.id"
+            label="Basic Edit"
+            editType="basicEdit"
+          /> </template
+      ></Column>
+      <Column>
+        <template #body="slotProps">
+          <EditApplication
+            :id="slotProps.data.id"
+            label="Date Edit"
+            editType="dateEdit"
+          /> </template
       ></Column>
     </DataTable>
   </div>
