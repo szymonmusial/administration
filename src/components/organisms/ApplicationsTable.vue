@@ -11,8 +11,24 @@
       <Column field="application_type" header="Application Type"> </Column>
       <Column field="person" header="Person"> </Column>
       <Column field="department" header="Department"> </Column>
-      <Column field="filing_date" header="Filing Date"> </Column>
-      <Column field="event_date" header="Event Date"> </Column>
+      <Column header="Filing Date">
+        <template #body="slotProps">
+          <DateToText
+            :date="slotProps.data.filing_date"
+            locales="pl-PL"
+            dateStyle="short"
+          />
+        </template>
+      </Column>
+      <Column header="Event Date">
+        <template #body="slotProps">
+          <DateToText
+            :date="slotProps.data.event_date"
+            locales="pl-PL"
+            dateStyle="short"
+          />
+        </template>
+      </Column>
       <Column>
         <template #body="slotProps">
           <EditApplication :id="slotProps.data.id" /></template
@@ -27,6 +43,7 @@ import Column from "primevue/column";
 
 import EditApplication from "./ButtonEditApplication.vue";
 import PriorityColumn from "../molecules/PriorityColumn.vue";
+import DateToText from "../atoms/DateToText.vue";
 
 import { useStore } from "vuex";
 import { computed } from "@vue/runtime-core";
@@ -38,6 +55,7 @@ export default {
     Column,
     EditApplication,
     PriorityColumn,
+    DateToText,
   },
   setup() {
     const store = useStore();
