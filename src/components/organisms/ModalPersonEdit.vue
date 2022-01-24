@@ -4,7 +4,12 @@
     title="Edit date Application"
     class="p-fluid p-formgrid p-grid basic-application-form"
   >
-    <FormVuelidateApplication @send="send" :rules="rules" :fields="form" />
+    <FormVuelidateApplication
+      @send="send"
+      :rules="rules"
+      :fields="form"
+      :personIsEditable="true"
+    />
   </Modal>
 </template>
 

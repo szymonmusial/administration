@@ -122,7 +122,7 @@ export default {
     CalendarForm,
     MultiSelectForm,
   },
-  props: ["rules", "fields"],
+  props: ["rules", "fields", "personIsEditable"],
   setup(props, { emit }) {
     //store
     const store = useStore();
@@ -182,7 +182,6 @@ export default {
     });
 
     form.person = "Szymon Musiał";
-    const personIsEditable = ref(false);
 
     const v$ = useVuelidate(props.rules, form);
 
@@ -197,7 +196,7 @@ export default {
       priorityOptions,
       applicationTypeOptions,
       personOptions,
-      personIsEditable,
+
       departmentOptions,
       dateToday,
       eventDateActive,
