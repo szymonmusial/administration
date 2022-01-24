@@ -1,8 +1,13 @@
 <template>
   <div class="add-application">
     <LargeButton
-      label="Add New Applications"
+      label="Add New Application in modal"
       @click="addNewApplication"
+      :loading="loading"
+    />
+    <LargeButton
+      label="Add New Applications in the new card"
+      @click="addNewApplicationInNewCard"
       :loading="loading"
     />
   </div>
@@ -12,18 +17,22 @@
 import { ref } from "@vue/reactivity";
 import LargeButton from "../atoms/LargeButton.vue";
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 
 export default {
   name: "AddNewApplication",
   components: { LargeButton },
   setup() {
+    const router = useRouter();
     const store = useStore();
     const loading = ref(false);
 
     const addNewApplication = () => {
       store.commit("setModal", "add");
     };
-    return { addNewApplication, loading };
+
+    const addNewApplicationInNewCard = () => router.push("/add");
+    return { addNewApplication, loading, addNewApplicationInNewCard, router };
   },
 };
 </script>
@@ -37,5 +46,9 @@ export default {
   padding: 1rem 1rem;
   font-weight: 700;
   text-align: center;
+}
+
+.add-application .p-button {
+  margin: 0 36px;
 }
 </style>

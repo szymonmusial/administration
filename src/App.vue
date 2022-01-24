@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div class="main">
     <loading :loadingStatus="loadingStatus" />
     <Toast />
     <router-view />
@@ -39,3 +39,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+.main {
+  background-color: #204887;
+}
+</style>
