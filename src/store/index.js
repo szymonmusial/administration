@@ -13,6 +13,7 @@ export default createStore({
   getters: {
     getLoadingStatus: (state) => state.loadingStatus,
     getModal: (state) => state.modal,
+    getEditingApplicationId: (state) => state.editingApplicationId,
   },
   mutations: {
     setLoadingStatus(state, status) {

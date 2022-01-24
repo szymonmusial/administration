@@ -49,7 +49,7 @@ export default {
     });
 
     const form = reactive({
-      name: "Test props",
+      name: "",
       reference: "",
       priority: false,
       type: "",

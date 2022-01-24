@@ -1,10 +1,10 @@
 <template>
   <Modal
     @closeModal="closeModal"
-    title="Add New Applications"
+    title="Basic Edit Application"
     class="p-fluid p-formgrid p-grid basic-application-form"
   >
-    <FormVuelidateApplication @send="send" />
+    <FormVuelidateApplication @send="send" :rules="rules" :fields="form" />
   </Modal>
 </template>
 
@@ -13,6 +13,11 @@ import Modal from "../atoms/Modal.vue";
 import FormVuelidateApplication from "./FormVuelidateApplication.vue";
 import { useStore } from "vuex";
 import ownToast from "../../composables/ownToast";
+
+import { required } from "@vuelidate/validators";
+import { referenceRule, nameRule } from "../../vuelidateForm/businessRules.js";
+import { reactive } from "@vue/reactivity";
+import { computed } from "@vue/runtime-core";
 /*
 To do:
  1. add spiner when data is adding
@@ -23,7 +28,7 @@ To do:
 
 */
 export default {
-  name: "AddApplicationDialog",
+  name: "ModalBasicEditApplication",
   components: {
     Modal,
     FormVuelidateApplication,
@@ -33,20 +38,37 @@ export default {
     const store = useStore();
     const { showSuccessToast, showErrorToast } = ownToast();
 
+    const rules = reactive({
+      name: { required, nameRule },
+      reference: { required, referenceRule },
+      priority: { required },
+    });
+    const applicationEditingId = computed(
+      () => store.getters.getEditingApplicationId
+    );
+
+    const dataFromApplication = computed(() =>
+      store.getters.getApplication(applicationEditingId.value)
+    );
+
+    const form = reactive({
+      name: dataFromApplication.value.name,
+      reference: dataFromApplication.value.reference_number,
+      priority: dataFromApplication.value.priority,
+    });
+
+    console.log(form);
+
     const send = (data) => {
       store.commit("setLoadingStatus", false);
       const application = {
+        id: applicationEditingId.value,
         name: data.name,
         reference_number: data.reference,
         priority: data.priority,
-        application_type: data.type,
-        person: data.person,
-        department: data.department,
-        filing_date: data.filingDate,
-        event_date: data.eventDate,
       };
       store
-        .dispatch("addApplication", application)
+        .dispatch("editApplication", application)
         .then(() => {
           showSuccessToast("Success", "Dodano Wniosek!");
           closeModal();
@@ -59,6 +81,8 @@ export default {
     return {
       closeModal,
       send,
+      rules,
+      form,
     };
   },
 };
