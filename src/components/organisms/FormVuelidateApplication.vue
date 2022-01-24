@@ -109,11 +109,9 @@ export default {
     ]);
 
     //Application Type
-    const applicationTypeOptions = ref([
-      { name: "Bank Pomysłów", id: 0 },
-      { name: "Wniosek Ogólny", id: 1 },
-      { name: "Zgłoszenie problemów", id: 2 },
-    ]);
+    const applicationTypeOptions = computed(() => {
+      return store.getters.getApplicationTypes;
+    });
 
     //Person
     const personOptions = computed(() => {
