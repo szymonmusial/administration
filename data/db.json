@@ -126,5 +126,9 @@
       "name": "Kadry",
       "id": 2
     }
+  ],
+  "users": [
+    { "name": "Szymon Musiał", "id": 0 },
+    { "name": "Kuba Musiał", "id": 1 }
   ]
 }

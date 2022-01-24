@@ -1,6 +1,7 @@
 import { createStore } from "vuex";
 import applications from "./modules/applications";
 import departments from "./modules/departments";
+import users from "./modules/users";
 
 export default createStore({
   state: {
@@ -19,5 +20,5 @@ export default createStore({
       state.modal = modal;
     },
   },
-  modules: { applications, departments },
+  modules: { applications, departments, users },
 });

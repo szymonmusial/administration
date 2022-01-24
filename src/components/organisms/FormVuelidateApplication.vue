@@ -116,10 +116,10 @@ export default {
     ]);
 
     //Person
-    const personOptions = ref([
-      { name: "Szymon Musiał", id: 0 },
-      { name: "Kuba Musiał", id: 1 },
-    ]);
+    const personOptions = computed(() => {
+      store.dispatch("setUsers");
+      return store.getters.getUsers;
+    });
 
     //Department
     const departmentOptions = computed(() => {
@@ -127,7 +127,7 @@ export default {
     });
 
     //Today Date
-    const dateToday = ref(new Date("2022-01-20"));
+    const dateToday = ref(new Date());
 
     const eventDateActive = computed(() => {
       if (form.filingDate !== "") {
