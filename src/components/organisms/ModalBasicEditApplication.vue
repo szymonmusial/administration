@@ -1,0 +1,65 @@
+<template>
+  <Modal
+    @closeModal="closeModal"
+    title="Add New Applications"
+    class="p-fluid p-formgrid p-grid basic-application-form"
+  >
+    <FormVuelidateApplication @send="send" />
+  </Modal>
+</template>
+
+<script>
+import Modal from "../atoms/Modal.vue";
+import FormVuelidateApplication from "./FormVuelidateApplication.vue";
+import { useStore } from "vuex";
+import ownToast from "../../composables/ownToast";
+/*
+To do:
+ 1. add spiner when data is adding
+ 2. add spiner when data is loading for example when departments is loading from api
+ 3. add prop with data
+ 4. check your voice message for u :)
+
+
+*/
+export default {
+  name: "AddApplicationDialog",
+  components: {
+    Modal,
+    FormVuelidateApplication,
+  },
+  setup(props, { emit }) {
+    const closeModal = () => emit("closeModal");
+    const store = useStore();
+    const { showSuccessToast, showErrorToast } = ownToast();
+
+    const send = (data) => {
+      store.commit("setLoadingStatus", false);
+      const application = {
+        name: data.name,
+        reference_number: data.reference,
+        priority: data.priority,
+        application_type: data.type,
+        person: data.person,
+        department: data.department,
+        filing_date: data.filingDate,
+        event_date: data.eventDate,
+      };
+      store
+        .dispatch("addApplication", application)
+        .then(() => {
+          showSuccessToast("Success", "Dodano Wniosek!");
+          closeModal();
+        })
+        .catch(() => {
+          showErrorToast("Error", "Nie udało się dodać wniosku");
+        })
+        .finally(() => store.commit("setLoadingStatus", true));
+    };
+    return {
+      closeModal,
+      send,
+    };
+  },
+};
+</script>

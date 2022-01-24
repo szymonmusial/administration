@@ -8,6 +8,7 @@ export default createStore({
   state: {
     loadingStatus: false,
     modal: "close",
+    editingApplicationId: null,
   },
   getters: {
     getLoadingStatus: (state) => state.loadingStatus,
@@ -19,6 +20,9 @@ export default createStore({
     },
     setModal(state, modal) {
       state.modal = modal;
+    },
+    setEditingApplicationId(state, id) {
+      state.editingApplicationId = id;
     },
   },
   modules: { applications, departments, users, applicationType },

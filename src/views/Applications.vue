@@ -1,6 +1,10 @@
 <template>
   <div id="Applications">
     <ModalAddApplication v-if="modal == 'add'" @closeModal="closeModal" />
+    <ModalBasicEditApplication
+      v-if="modal == 'basicEdit'"
+      @closeModal="closeModal"
+    />
     <ApplicationsTable />
     <ButtonNewApplication />
   </div>
@@ -12,10 +16,16 @@ import ButtonNewApplication from "../components/organisms/ButtonNewApplication.v
 import ModalAddApplication from "../components/organisms/ModalAddApplication.vue";
 import { useStore } from "vuex";
 import { computed } from "@vue/runtime-core";
+import ModalBasicEditApplication from "../components/organisms/ModalBasicEditApplication.vue";
 
 export default {
   name: "Applications",
-  components: { ApplicationsTable, ButtonNewApplication, ModalAddApplication },
+  components: {
+    ApplicationsTable,
+    ButtonNewApplication,
+    ModalAddApplication,
+    ModalBasicEditApplication,
+  },
   setup() {
     const store = useStore();
     const modal = computed(() => store.getters.getModal);

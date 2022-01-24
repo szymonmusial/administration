@@ -146,7 +146,7 @@ export default {
       filingDate: "",
       eventDate: "",
     });
-    const rules = {
+    const rules = reactive({
       name: { required, nameRule },
       reference: { required, referenceRule },
       priority: { required },
@@ -155,7 +155,7 @@ export default {
       department: { required },
       filingDate: { required },
       eventDate: { required },
-    };
+    });
     form.person = "Szymon Musiał";
     const personIsEditable = ref(false);
     const v$ = useVuelidate(rules, form);
