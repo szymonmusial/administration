@@ -7,6 +7,7 @@
         :submitted="submitted"
         v-model="form.name"
         label="Name"
+        v-if="isActiveField('name')"
       />
       <!-- Reference -->
       <InputFormText
@@ -14,6 +15,7 @@
         :submitted="submitted"
         v-model="form.reference"
         label="Reference"
+        v-if="isActiveField('reference')"
       />
       <!-- Priority -->
       <DropdownForm
@@ -24,6 +26,7 @@
         placeholder="Is Priority"
         label="Priority"
         optionValue="code"
+        v-if="isActiveField('priority')"
       />
       <!-- Type -->
       <DropdownForm
@@ -34,6 +37,7 @@
         placeholder="Select a Application Type"
         label="Application Type"
         optionValue="name"
+        v-if="isActiveField('type')"
       />
       <!-- Person -->
       <DropdownForm
@@ -45,6 +49,7 @@
         label="Person"
         optionValue="name"
         :disabled="!personIsEditable"
+        v-if="isActiveField('person')"
       />
       <!-- Department -->
       <DropdownForm
@@ -55,6 +60,7 @@
         placeholder="Select Department"
         label="Department"
         optionValue="name"
+        v-if="isActiveField('department')"
       />
       <!-- Filing Date -->
       <CalendarForm
@@ -64,6 +70,7 @@
         :submitted="submitted"
         label="Filing Date"
         manualInput="false"
+        v-if="isActiveField('filingDate')"
       />
       <!-- Event Date -->
       <CalendarForm
@@ -74,6 +81,7 @@
         label="Event Date"
         manualInput="false"
         :disabled="!eventDateActive"
+        v-if="isActiveField('eventDate')"
       />
       <!-- Submit -->
       <Button type="submit" label="Submit" class="mt-2" />
@@ -92,12 +100,11 @@ import { computed } from "@vue/runtime-core";
 import { useStore } from "vuex";
 
 import { useVuelidate } from "@vuelidate/core";
-import { required } from "@vuelidate/validators";
-import { referenceRule, nameRule } from "../../vuelidateForm/businessRules.js";
 
 export default {
   name: "FormVuelidateApplication",
   components: { Button, InputFormText, DropdownForm, CalendarForm },
+  props: ["rules"],
   setup(props, { emit }) {
     //store
     const store = useStore();
@@ -134,8 +141,15 @@ export default {
         return false;
       }
     });
-    //Vuelidate
 
+    const isActiveField = (key) => {
+      if (Object.prototype.hasOwnProperty.call(props.rules, key)) {
+        return true;
+      }
+      return false;
+    };
+
+    //Vuelidate
     const form = reactive({
       name: "",
       reference: "",
@@ -146,19 +160,11 @@ export default {
       filingDate: "",
       eventDate: "",
     });
-    const rules = reactive({
-      name: { required, nameRule },
-      reference: { required, referenceRule },
-      priority: { required },
-      person: { required },
-      type: { required },
-      department: { required },
-      filingDate: { required },
-      eventDate: { required },
-    });
+
     form.person = "Szymon Musiał";
     const personIsEditable = ref(false);
-    const v$ = useVuelidate(rules, form);
+
+    const v$ = useVuelidate(props.rules, form);
 
     const submitted = ref(false);
     const handleSubmit = (isFormValid) => {
@@ -179,6 +185,7 @@ export default {
       v$,
       handleSubmit,
       submitted,
+      isActiveField,
     };
   },
 };

@@ -4,7 +4,7 @@
     title="Add New Applications"
     class="p-fluid p-formgrid p-grid basic-application-form"
   >
-    <FormVuelidateApplication @send="send" />
+    <FormVuelidateApplication @send="send" :rules="rules" />
   </Modal>
 </template>
 
@@ -13,6 +13,10 @@ import Modal from "../atoms/Modal.vue";
 import FormVuelidateApplication from "./FormVuelidateApplication.vue";
 import { useStore } from "vuex";
 import ownToast from "../../composables/ownToast";
+
+import { required } from "@vuelidate/validators";
+import { referenceRule, nameRule } from "../../vuelidateForm/businessRules.js";
+import { reactive } from "@vue/reactivity";
 /*
 To do:
  1. add spiner when data is adding
@@ -32,6 +36,17 @@ export default {
     const closeModal = () => emit("closeModal");
     const store = useStore();
     const { showSuccessToast, showErrorToast } = ownToast();
+
+    const rules = reactive({
+      name: { required, nameRule },
+      reference: { required, referenceRule },
+      priority: { required },
+      person: { required },
+      type: { required },
+      department: { required },
+      filingDate: { required },
+      eventDate: { required },
+    });
 
     const send = (data) => {
       store.commit("setLoadingStatus", false);
@@ -59,6 +74,7 @@ export default {
     return {
       closeModal,
       send,
+      rules,
     };
   },
 };
