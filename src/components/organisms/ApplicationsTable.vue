@@ -45,6 +45,14 @@
             editType="dateEdit"
           /> </template
       ></Column>
+      <Column>
+        <template #body="slotProps">
+          <EditApplication
+            :id="slotProps.data.id"
+            label="Person Edit"
+            editType="personEdit"
+          /> </template
+      ></Column>
     </DataTable>
   </div>
 </template>

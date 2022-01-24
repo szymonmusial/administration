@@ -51,6 +51,17 @@
         :disabled="!personIsEditable"
         v-if="isActiveField('person')"
       />
+      <!-- Person list -->
+      <MultiSelectForm
+        :input="v$.subscriptionList"
+        :submitted="submitted"
+        v-model="form.subscriptionList"
+        :options="personOptions"
+        placeholder="Select persons"
+        label="Subscription List"
+        optionValue="name"
+        v-if="isActiveField('subscriptionList')"
+      />
       <!-- Department -->
       <DropdownForm
         :input="v$.department"
@@ -94,6 +105,7 @@ import Button from "primevue/button";
 import InputFormText from "../molecules/InputFormText.vue";
 import DropdownForm from "../molecules/DropdownForm.vue";
 import CalendarForm from "../molecules/CalendarForm.vue";
+import MultiSelectForm from "../molecules/MultiSelectForm.vue";
 
 import { reactive, ref } from "@vue/reactivity";
 import { computed } from "@vue/runtime-core";
@@ -103,7 +115,13 @@ import { useVuelidate } from "@vuelidate/core";
 
 export default {
   name: "FormVuelidateApplication",
-  components: { Button, InputFormText, DropdownForm, CalendarForm },
+  components: {
+    Button,
+    InputFormText,
+    DropdownForm,
+    CalendarForm,
+    MultiSelectForm,
+  },
   props: ["rules", "fields"],
   setup(props, { emit }) {
     //store
@@ -160,6 +178,7 @@ export default {
       department: props.fields.department,
       filingDate: props.fields.filingDate,
       eventDate: props.fields.eventDate,
+      subscriptionList: props.fields.subscriptionList,
     });
 
     form.person = "Szymon Musiał";

@@ -1,7 +1,7 @@
 <template>
   <Modal
     @closeModal="closeModal"
-    title="Add New Applications"
+    title="Edit date Application"
     class="p-fluid p-formgrid p-grid basic-application-form"
   >
     <FormVuelidateApplication @send="send" :rules="rules" :fields="form" />
@@ -15,19 +15,11 @@ import { useStore } from "vuex";
 import ownToast from "../../composables/ownToast";
 
 import { required } from "@vuelidate/validators";
-import { referenceRule, nameRule } from "../../vuelidateForm/businessRules.js";
 import { reactive } from "@vue/reactivity";
-/*
-To do:
- 1. add spiner when data is adding
- 2. add spiner when data is loading for example when departments is loading from api
- 3. add prop with data
- 4. check your voice message for u :)
+import { computed } from "@vue/runtime-core";
 
-
-*/
 export default {
-  name: "AddApplicationDialog",
+  name: "ModalDateEditApplication",
   components: {
     Modal,
     FormVuelidateApplication,
@@ -38,49 +30,40 @@ export default {
     const { showSuccessToast, showErrorToast } = ownToast();
 
     const rules = reactive({
-      name: { required, nameRule },
-      reference: { required, referenceRule },
-      priority: { required },
-      person: { required },
-      type: { required },
-      department: { required },
-      filingDate: { required },
-      eventDate: { required },
       subscriptionList: {},
+      person: { required },
     });
+    const applicationEditingId = computed(
+      () => store.getters.getEditingApplicationId
+    );
+
+    const dataFromApplication = computed(() =>
+      store.getters.getApplication(applicationEditingId.value)
+    );
 
     const form = reactive({
-      name: "",
-      reference: "",
-      priority: false,
-      type: "",
-      person: "",
-      department: "",
-      filingDate: "",
-      eventDate: "",
+      subscriptionList: dataFromApplication.value.subscriptionList,
+      person: dataFromApplication.value.person,
     });
+
+    console.log(form);
 
     const send = (data) => {
       store.commit("setLoadingStatus", false);
       const application = {
-        name: data.name,
-        reference_number: data.reference,
-        priority: data.priority,
-        application_type: data.type,
-        person: data.person,
-        department: data.department,
-        filing_date: data.filingDate,
-        event_date: data.eventDate,
+        id: applicationEditingId.value,
         subscriptionList: data.subscriptionList,
+        person: data.person,
       };
+      debugger;
       store
-        .dispatch("addApplication", application)
+        .dispatch("editApplication", application)
         .then(() => {
-          showSuccessToast("Success", "Dodano Wniosek!");
+          showSuccessToast("Success", "Zmodyfikowane zadanie!");
           closeModal();
         })
         .catch(() => {
-          showErrorToast("Error", "Nie udało się dodać wniosku");
+          showErrorToast("Error", "Nie udało się zmodyfikować zadania");
         })
         .finally(() => store.commit("setLoadingStatus", true));
     };

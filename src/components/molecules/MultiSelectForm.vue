@@ -1,15 +1,15 @@
 <template>
-  <!-- Input Text -->
-  <div class="p-field p-col-12 p-md-6">
+  <div class="p-field p-col-12 p-md-6 test">
     <LabelForm :label="label" :showError="showError" />
 
-    <Calendar
-      :class="{ 'p-invalid': showError }"
-      :modelValue="stringToDate(modelValue)"
+    <MultiSelect
+      :options="options"
+      :modelValue="modelValue"
       @update:modelValue="emitInput"
-      :maxDate="stringToDate(maxDate)"
-      :manualInput="manualInput"
-      :minDate="stringToDate(minDate)"
+      :class="{ 'p-invalid': showError }"
+      :optionLabel="optionLabel"
+      :optionValue="optionValue"
+      :placeholder="placeholder"
       :disabled="disabled"
     />
 
@@ -18,39 +18,39 @@
 </template>
 
 <script>
-import Calendar from "primevue/calendar";
+import MultiSelect from "primevue/multiselect";
 import LabelForm from "../atoms/LabelForm.vue";
 
 import { computed } from "@vue/runtime-core";
 import SmallErrorForm from "../atoms/SmallErrorForm.vue";
 
 export default {
-  name: "InputFormText",
-  components: { LabelForm, SmallErrorForm, Calendar },
+  name: "MultiSelectForm",
+  components: { MultiSelect, LabelForm, SmallErrorForm },
   emits: ["emitInput"],
-  props: [
-    "input",
-    "submitted",
-    "label",
-    "modelValue",
-    "maxDate",
-    "manualInput",
-    "minDate",
-    "disabled",
-  ],
+  props: {
+    input: Object,
+    submitted: Boolean,
+    label: String,
+    modelValue: Array,
+    options: Object,
+    placeholder: String,
+    disabled: Boolean,
+    optionLabel: {
+      type: String,
+      default: "name",
+    },
+    optionValue: {
+      type: String,
+      default: "name",
+    },
+  },
   setup(props, { emit }) {
     const emitInput = (event) => {
       emit("update:modelValue", event);
       console.log(event);
     };
-    const stringToDate = (string) => {
-      let date = new Date(string);
-      if (!isNaN(date)) {
-        return date;
-      } else {
-        return "";
-      }
-    };
+
     const showError = computed(() => {
       if (props.input.$invalid && props.submitted) {
         return true;
@@ -59,7 +59,7 @@ export default {
       }
     });
 
-    return { emitInput, showError, stringToDate };
+    return { emitInput, showError };
   },
 };
 </script>
