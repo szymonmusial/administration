@@ -1,26 +1,27 @@
 <template>
   <div class="priority-column">
-    <WarningButton
+    <own-button
       v-if="priority === 'true'"
       label="Yes"
-      class="warning-button"
-    ></WarningButton>
+      className="p-button-warning"
+      class="priority-column__button"
+    />
     <div v-else>No</div>
   </div>
 </template>
 
 <script>
-import WarningButton from "../atoms/WarningButton.vue";
+import OwnButton from "../atoms/OwnButton.vue";
 
 export default {
   name: "PriorityColumn",
-  components: { WarningButton },
+  components: { OwnButton },
   props: ["priority"],
 };
 </script>
 
 <style scoped>
-.warning-button {
+.priority-column__button {
   cursor: default !important;
 }
 
