@@ -22,6 +22,7 @@
             v-model="form.password"
             label="Password"
             className="outlined"
+            texttype="password"
           />
           <Button type="submit" label="Submit" class="mt-2 p-button" />
         </form>

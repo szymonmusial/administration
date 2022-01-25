@@ -6,7 +6,7 @@
 
     <InputText
       id="name"
-      type="text"
+      :type="texttype"
       :class="[{ 'p-invalid': showError }, className]"
       :modelValue="modelValue"
       @input="emitInput"
@@ -26,7 +26,7 @@ export default {
   name: "InputFormText",
   components: { InputText, LabelForm, SmallErrorForm },
   emits: ["emitInput"],
-  props: ["input", "submitted", "label", "modelValue", "className"],
+  props: ["input", "submitted", "label", "modelValue", "className", "texttype"],
   setup(props, { emit }) {
     const emitInput = (event) => {
       emit("update:modelValue", event.target.value);
