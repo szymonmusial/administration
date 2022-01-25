@@ -42,6 +42,7 @@ import { useVuelidate } from "@vuelidate/core";
 export default {
   name: "FormSignIn",
   components: { Button, InputFormText },
+  emits: ["send"],
   setup(props, { emit }) {
     const form = reactive({
       login: "a",
