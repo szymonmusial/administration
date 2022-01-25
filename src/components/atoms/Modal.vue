@@ -1,5 +1,5 @@
 <template>
-  <Dialog visible="true" @update:visible="closeModal" class="form__dialog">
+  <Dialog :visible="true" @update:visible="closeModal" class="form__dialog">
     <template #header>
       <h3>{{ title }}</h3>
     </template>

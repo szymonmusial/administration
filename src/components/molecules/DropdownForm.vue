@@ -33,7 +33,7 @@ export default {
     input: Object,
     submitted: Boolean,
     label: String,
-    modelValue: String,
+    modelValue: [String, Boolean],
     options: Object,
     placeholder: String,
     disabled: Boolean,

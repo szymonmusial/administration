@@ -57,7 +57,7 @@ export default {
       if (props.input.$invalid && props.submitted) {
         return true;
       } else {
-        false;
+        return false;
       }
     });
 
