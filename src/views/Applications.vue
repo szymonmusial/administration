@@ -11,6 +11,10 @@
     />
 
     <ModalPersonEdit v-if="modal == 'personEdit'" @closeModal="closeModal" />
+    <ModalListSubscriptions
+      v-if="modal == 'ListSubscription'"
+      @closeModal="closeModal"
+    />
     <ApplicationsTable />
     <ButtonNewApplication />
   </div>
@@ -25,6 +29,7 @@ import { computed } from "@vue/runtime-core";
 import ModalBasicEditApplication from "../components/organisms/ModalBasicEditApplication.vue";
 import ModalDateEditApplication from "../components/organisms/ModalDateEditApplication.vue";
 import ModalPersonEdit from "../components/organisms/ModalPersonEdit.vue";
+import ModalListSubscriptions from "../components/organisms/ModalListSubscriptions.vue";
 
 export default {
   name: "Applications",
@@ -35,6 +40,7 @@ export default {
     ModalBasicEditApplication,
     ModalDateEditApplication,
     ModalPersonEdit,
+    ModalListSubscriptions,
   },
   setup() {
     const store = useStore();
