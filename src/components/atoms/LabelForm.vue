@@ -15,5 +15,6 @@ export default {
 .form__label {
   margin-bottom: 10px !important;
   display: block;
+  font-weight: 600;
 }
 </style>
