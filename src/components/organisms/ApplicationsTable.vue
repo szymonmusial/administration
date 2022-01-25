@@ -35,6 +35,7 @@
             :id="slotProps.data.id"
             label="Basic Edit"
             editType="basicEdit"
+            className="p-button-secondary"
           /> </template
       ></Column>
       <Column>
@@ -51,6 +52,7 @@
             :id="slotProps.data.id"
             label="Person Edit"
             editType="personEdit"
+            className="p-button-help"
           /> </template
       ></Column>
     </DataTable>
