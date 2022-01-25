@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Applications from "../views/Applications.vue";
 import AddNewApplication from "../views/AddNewApplication.vue";
+import SignIn from "../views/SignIn.vue";
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
     path: "/add",
     name: "AddNewApplication",
     component: AddNewApplication,
+  },
+  {
+    path: "/signin",
+    name: "SignIn",
+    component: SignIn,
   },
 ];
 

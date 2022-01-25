@@ -39,8 +39,4 @@ export default {
   },
 };
 </script>
-<style scoped>
-.main {
-  background-color: #204887;
-}
-</style>
+<style scoped></style>
