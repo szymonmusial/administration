@@ -6,17 +6,20 @@
         are waiting for you
       </h1>
     </div>
+    <flying-icon />
   </div>
 </template>
 
 <script>
 export default {
   name: "SignInBanner",
+  components: {},
 };
 </script>
 
 <style scoped>
 .sign-in__banner {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
