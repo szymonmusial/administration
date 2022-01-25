@@ -24,15 +24,15 @@ export default {
     onMounted(() => {
       store
         .dispatch("setApplications")
-        .then(() => {
-          store.commit("setLoadingStatus", true);
-        })
-        .catch(() => {
-          showErrorToast("Critical Error", "Application failed to load");
-        });
-      store.dispatch("setDepartments").catch(() => {
-        showErrorToast("Error", "Departments failed to load");
-      });
+        .catch(() =>
+          showErrorToast("Critical Error", "Application failed to load")
+        );
+      store
+        .dispatch("setDepartments")
+        .catch(() => showErrorToast("Error", "Departments failed to load"));
+      store
+        .dispatch("setUsers")
+        .catch(() => showErrorToast("Error", "Users failed to load"));
     });
 
     return { loadingStatus };

@@ -26,9 +26,14 @@ const applications = {
   },
   actions: {
     setApplications(context) {
-      return axiosClient.get("applications").then((response) => {
-        context.commit("setApplications", response.data);
-      });
+      return axiosClient
+        .get("applications")
+        .then((response) => {
+          context.commit("setApplications", response.data);
+        })
+        .finally(() => {
+          context.commit("setLoadingStatus", true);
+        });
     },
     setApplication(context, id) {
       return axiosClient.get("applications/" + id).then((response) => {

@@ -5,7 +5,7 @@
     <Dropdown
       :options="options"
       :modelValue="modelValue"
-      @update:modelValue="emitInput"
+      @update:modelValue="$emit('update:modelValue', $event)"
       :class="{ 'p-invalid': showError }"
       :optionLabel="optionLabel"
       :optionValue="optionValue"
@@ -47,21 +47,9 @@ export default {
       default: "name",
     },
   },
-  setup(props, { emit }) {
-    const emitInput = (event) => {
-      emit("update:modelValue", event);
-      console.log(event);
-    };
-
-    const showError = computed(() => {
-      if (props.input.$invalid && props.submitted) {
-        return true;
-      } else {
-        false;
-      }
-    });
-
-    return { emitInput, showError };
+  setup(props) {
+    const showError = computed(() => props.input.$invalid && props.submitted);
+    return { showError };
   },
 };
 </script>

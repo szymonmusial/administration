@@ -32,13 +32,7 @@ export default {
       emit("update:modelValue", event.target.value);
     };
 
-    const showError = computed(() => {
-      if (props.input.$invalid && props.submitted) {
-        return true;
-      } else {
-        false;
-      }
-    });
+    const showError = computed(() => props.input.$invalid && props.submitted);
 
     return { emitInput, showError };
   },
