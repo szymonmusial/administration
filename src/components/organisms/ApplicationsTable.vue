@@ -11,6 +11,14 @@
       <Column field="application_type" header="Application Type"> </Column>
       <Column field="person" header="Person"> </Column>
       <Column field="department" header="Department"> </Column>
+      <Column header="Subscriptions">
+        <template #body="slotProps">
+          <ButtonOpenModal
+            :id="slotProps.data.id"
+            label="Show"
+            editType="ListSubscription"
+          /> </template
+      ></Column>
       <Column header="Filing Date">
         <template #body="slotProps">
           <DateToText
@@ -31,7 +39,7 @@
       </Column>
       <Column>
         <template #body="slotProps">
-          <EditApplication
+          <ButtonOpenModal
             :id="slotProps.data.id"
             label="Basic Edit"
             editType="basicEdit"
@@ -40,7 +48,7 @@
       ></Column>
       <Column>
         <template #body="slotProps">
-          <EditApplication
+          <ButtonOpenModal
             :id="slotProps.data.id"
             label="Date Edit"
             editType="dateEdit"
@@ -48,7 +56,7 @@
       ></Column>
       <Column>
         <template #body="slotProps">
-          <EditApplication
+          <ButtonOpenModal
             :id="slotProps.data.id"
             label="Person Edit"
             editType="personEdit"
@@ -63,7 +71,7 @@
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 
-import EditApplication from "./ButtonEditApplication.vue";
+import ButtonOpenModal from "./ButtonOpenModal.vue";
 import PriorityColumn from "../molecules/PriorityColumn.vue";
 import DateToText from "../atoms/DateToText.vue";
 
@@ -75,7 +83,7 @@ export default {
   components: {
     DataTable,
     Column,
-    EditApplication,
+    ButtonOpenModal,
     PriorityColumn,
     DateToText,
   },
