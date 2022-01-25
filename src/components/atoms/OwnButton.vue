@@ -11,4 +11,8 @@ export default {
   props: ["loading", "label", "type", "className"],
 };
 </script>
-<style scoped></style>
+<style scoped>
+.p-button-large {
+  padding: 0.85rem 3.5rem;
+}
+</style>

@@ -1,14 +1,16 @@
 <template>
   <div class="add-application">
-    <LargeButton
+    <OwnButton
       label="Add New Application in modal"
       @click="addNewApplication"
       :loading="loading"
+      className="p-button-large"
     />
-    <LargeButton
+    <OwnButton
       label="Add New Applications in the new card"
       @click="addNewApplicationInNewCard"
       :loading="loading"
+      className="p-button-large"
     />
   </div>
 </template>
@@ -16,13 +18,14 @@
 <script>
 // TO DO: replace with one button for add and other edits
 import { ref } from "@vue/reactivity";
-import LargeButton from "../atoms/LargeButton.vue";
+
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
+import OwnButton from "../atoms/OwnButton.vue";
 
 export default {
   name: "ButtonNewApplication",
-  components: { LargeButton },
+  components: { OwnButton },
   setup() {
     const router = useRouter();
     const store = useStore();
