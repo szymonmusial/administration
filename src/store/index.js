@@ -3,6 +3,7 @@ import applications from "./modules/applications";
 import departments from "./modules/departments";
 import users from "./modules/users";
 import applicationType from "./modules/applicationType";
+import auth from "./modules/auth";
 
 export default createStore({
   state: {
@@ -26,5 +27,5 @@ export default createStore({
       state.editingApplicationId = id;
     },
   },
-  modules: { applications, departments, users, applicationType },
+  modules: { applications, departments, users, applicationType, auth },
 });

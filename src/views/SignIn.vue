@@ -1,6 +1,6 @@
 <template>
   <div class="sign-in" id="sign-in">
-    <SignInForm class="sign-in__form" />
+    <SignInForm class="sign-in__form" @send="signin" />
     <SignInBanner class="sign-in__banner" />
   </div>
 </template>
@@ -8,10 +8,18 @@
 <script>
 import SignInBanner from "../components/molecules/SignInBanner.vue";
 import SignInForm from "../components/molecules/SignInForm.vue";
+import { useStore } from "vuex";
 
 export default {
   name: "SignIn",
   components: { SignInForm, SignInBanner },
+  setup() {
+    const store = useStore();
+    const signin = () => {
+      store.dispatch("signIn");
+    };
+    return { signin };
+  },
 };
 </script>
 
