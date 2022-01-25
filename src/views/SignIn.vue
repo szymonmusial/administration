@@ -16,7 +16,9 @@ export default {
   setup() {
     const store = useStore();
     const signin = () => {
-      store.dispatch("signIn");
+      store.dispatch("signIn").then(() => {
+        alert("zalogowano!");
+      });
     };
     return { signin };
   },
