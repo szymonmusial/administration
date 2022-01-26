@@ -45,8 +45,8 @@ export default {
   emits: ["send"],
   setup(props, { emit }) {
     const form = reactive({
-      login: "a",
-      password: "a",
+      login: "",
+      password: "",
     });
     const rules = reactive({
       login: { required },
