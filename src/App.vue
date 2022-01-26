@@ -22,19 +22,20 @@ export default {
     const loadingStatus = computed(() => store.getters.getLoadingStatus);
 
     onMounted(() => {
-      store
-        .dispatch("setApplications")
-        .catch(() =>
-          showErrorToast("Critical Error", "Application failed to load")
-        );
-      store
-        .dispatch("setDepartments")
-        .catch(() => showErrorToast("Error", "Departments failed to load"));
-      store
-        .dispatch("setUsers")
-        .catch(() => showErrorToast("Error", "Users failed to load"));
+      store.dispatch("setAuth").then(() => {
+        store
+          .dispatch("setApplications")
+          .catch(() =>
+            showErrorToast("Critical Error", "Application failed to load")
+          );
+        store
+          .dispatch("setDepartments")
+          .catch(() => showErrorToast("Error", "Departments failed to load"));
+        store
+          .dispatch("setUsers")
+          .catch(() => showErrorToast("Error", "Users failed to load"));
+      });
     });
-
     return { loadingStatus };
   },
 };
