@@ -2,6 +2,7 @@ import axiosClient from "../../agent/axiosClient.js";
 import {
   setTokenToCookie,
   getTokenFromCookie,
+  removeTokenFromCookie,
 } from "../../infrastructure/coockie";
 import jwt_decode from "jwt-decode";
 
@@ -62,6 +63,10 @@ const token = {
             .dispatch("setToken", 0)
             .then(() => context.dispatch("setAuth"))
         );
+    },
+    signOut(context) {
+      removeTokenFromCookie();
+      context.commit("setAuth", {});
     },
   },
 };

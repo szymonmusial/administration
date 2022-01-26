@@ -10,17 +10,21 @@ import { useStore } from "vuex";
 import ownToast from "../../composables/ownToast";
 import Loading from "../atoms/Loading.vue";
 import AppToolbar from "../atoms/AppToolbar.vue";
+import { useRouter } from "vue-router";
 
 export default {
   name: "AppWrapper",
   components: { Loading, AppToolbar },
   setup() {
     const store = useStore();
-    const { showErrorToast } = ownToast();
+    const router = useRouter();
+    const { showErrorToast, showSuccessToast } = ownToast();
     const userInfo = computed(() => store.getters.getUserInfo);
     const appIsLoaded = ref(false);
     const logOut = () => {
-      alert("I want Log Out!");
+      store.dispatch("signOut");
+      router.push("/signin");
+      showSuccessToast("Logged out", "You have been logged out");
     };
     onMounted(() => {
       store
