@@ -3,6 +3,8 @@ import Applications from "../views/Applications.vue";
 import AddNewApplication from "../views/AddNewApplication.vue";
 import SignIn from "../views/SignIn.vue";
 
+import store from "../store";
+
 const routes = [
   {
     path: "/",
@@ -26,4 +28,10 @@ const router = createRouter({
   routes,
 });
 
+// it's good idea keep it in this place?
+
+router.beforeEach((to, from, next) => {
+  console.log(store.getters.getAuth);
+  next();
+});
 export default router;

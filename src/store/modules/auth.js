@@ -6,7 +6,9 @@ const token = {
   state: {
     auth: [],
   },
-  getters: {},
+  getters: {
+    getAuth: (state) => state.auth,
+  },
   mutations: {
     setAuth(state, auth) {
       state.auth = auth;
