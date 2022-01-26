@@ -2,8 +2,10 @@ import { createRouter, createWebHistory } from "vue-router";
 import Applications from "../views/Applications.vue";
 import AddNewApplication from "../views/AddNewApplication.vue";
 import SignIn from "../views/SignIn.vue";
-
-import store from "../store";
+import {
+  authenticated,
+  canOpenApplicationInNewCard,
+} from "../infrastructure/permission/usePermission";
 
 const routes = [
   {
@@ -28,17 +30,21 @@ const router = createRouter({
   routes,
 });
 
-// it's good idea keep it in this place?
-
 router.beforeEach((to, from, next) => {
-  if (store.getters.checkAuth || to.name === "SignIn") {
-    next();
+  const toName = to.name;
+
+  if (authenticated() || to.name === "SignIn") {
+    switch (toName) {
+      case "AddNewApplication":
+        if (canOpenApplicationInNewCard()) {
+          next();
+        }
+        break;
+      default:
+        next();
+    }
   } else {
     next({ path: "/signin" });
   }
 });
 export default router;
-
-//const CANMODIFYUSERINFO = "CanModifyUsersInfo";
-
-//if(PERMISSION.CANMODIFYUSERINFO){
