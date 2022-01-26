@@ -1,12 +1,14 @@
 <template>
-  <div class="p-dialog-content p-component p-dialog AddNewApplication">
-    <FormVuelidateApplication
-      @send="send"
-      :rules="rules"
-      :fields="form"
-      :personIsEditable="false"
-    />
-  </div>
+  <app-wrapper>
+    <div class="p-dialog-content p-component p-dialog AddNewApplication">
+      <FormVuelidateApplication
+        @send="send"
+        :rules="rules"
+        :fields="form"
+        :personIsEditable="false"
+      />
+    </div>
+  </app-wrapper>
 </template>
 
 <script>
@@ -18,11 +20,13 @@ import { required } from "@vuelidate/validators";
 import { referenceRule, nameRule } from "../vuelidateForm/businessRules.js";
 import { reactive } from "@vue/reactivity";
 import { useRouter } from "vue-router";
+import AppWrapper from "../components/organisms/AppWrapper.vue";
 
 export default {
   name: "AddNewApplication",
   components: {
     FormVuelidateApplication,
+    AppWrapper,
   },
   setup() {
     const close = () => router.push("/");

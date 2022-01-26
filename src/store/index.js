@@ -7,7 +7,7 @@ import auth from "./modules/auth";
 
 export default createStore({
   state: {
-    loadingStatus: false,
+    loadingStatus: true,
     modal: "close",
     editingApplicationId: null,
   },

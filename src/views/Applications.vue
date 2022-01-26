@@ -1,22 +1,24 @@
 <template>
   <div id="Applications">
-    <ModalAddApplication v-if="modal == 'add'" @closeModal="closeModal" />
-    <ModalBasicEditApplication
-      v-if="modal == 'basicEdit'"
-      @closeModal="closeModal"
-    />
-    <ModalDateEditApplication
-      v-if="modal == 'dateEdit'"
-      @closeModal="closeModal"
-    />
+    <app-wrapper>
+      <ModalAddApplication v-if="modal == 'add'" @closeModal="closeModal" />
+      <ModalBasicEditApplication
+        v-if="modal == 'basicEdit'"
+        @closeModal="closeModal"
+      />
+      <ModalDateEditApplication
+        v-if="modal == 'dateEdit'"
+        @closeModal="closeModal"
+      />
 
-    <ModalPersonEdit v-if="modal == 'personEdit'" @closeModal="closeModal" />
-    <ModalListSubscriptions
-      v-if="modal == 'ListSubscription'"
-      @closeModal="closeModal"
-    />
-    <ApplicationsTable />
-    <ButtonNewApplication />
+      <ModalPersonEdit v-if="modal == 'personEdit'" @closeModal="closeModal" />
+      <ModalListSubscriptions
+        v-if="modal == 'ListSubscription'"
+        @closeModal="closeModal"
+      />
+      <ApplicationsTable />
+      <ButtonNewApplication />
+    </app-wrapper>
   </div>
 </template>
 
@@ -30,6 +32,7 @@ import ModalBasicEditApplication from "../components/organisms/ModalBasicEditApp
 import ModalDateEditApplication from "../components/organisms/ModalDateEditApplication.vue";
 import ModalPersonEdit from "../components/organisms/ModalPersonEdit.vue";
 import ModalListSubscriptions from "../components/organisms/ModalListSubscriptions.vue";
+import AppWrapper from "../components/organisms/AppWrapper.vue";
 
 export default {
   name: "Applications",
@@ -41,6 +44,7 @@ export default {
     ModalDateEditApplication,
     ModalPersonEdit,
     ModalListSubscriptions,
+    AppWrapper,
   },
   setup() {
     const store = useStore();
