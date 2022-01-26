@@ -1,5 +1,5 @@
 const perm = {
-  canModifyUserInfo: "CanModifyUserInfoo",
+  canModifyUserInfo: "CanModifyUserInfo",
   canSetApplicationPriority: "CanSetApplicationPriority",
   canOpenApplicationInNewCard: "CanOpenApplicationInNewCard",
 };
