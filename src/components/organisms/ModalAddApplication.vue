@@ -8,7 +8,7 @@
       @send="send"
       :rules="rules"
       :fields="form"
-      :personIsEditable="false"
+      :disabledFields="disabledFields"
     />
   </Modal>
 </template>
@@ -22,6 +22,7 @@ import ownToast from "../../composables/ownToast";
 import { required } from "@vuelidate/validators";
 import { referenceRule, nameRule } from "../../vuelidateForm/businessRules.js";
 import { reactive } from "@vue/reactivity";
+import { canSetApplicationPriority } from "../../infrastructure/permission/usePermission";
 
 export default {
   name: "ModalAddApplication",
@@ -33,6 +34,11 @@ export default {
     const closeModal = () => emit("closeModal");
     const store = useStore();
     const { showSuccessToast, showErrorToast } = ownToast();
+
+    const disabledFields = reactive({
+      person: true,
+      priority: !canSetApplicationPriority(),
+    });
 
     const rules = reactive({
       name: { required, nameRule },
@@ -49,7 +55,7 @@ export default {
     const form = reactive({
       name: "",
       reference: "",
-      priority: false,
+      priority: "false",
       type: "",
       person: "",
       department: "",
@@ -86,6 +92,7 @@ export default {
       send,
       rules,
       form,
+      disabledFields,
     };
   },
 };

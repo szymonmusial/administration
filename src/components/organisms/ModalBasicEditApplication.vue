@@ -4,7 +4,12 @@
     title="Basic Edit Application"
     class="p-fluid p-formgrid p-grid basic-application-form"
   >
-    <FormVuelidateApplication @send="send" :rules="rules" :fields="form" />
+    <FormVuelidateApplication
+      @send="send"
+      :rules="rules"
+      :fields="form"
+      :disabledFields="disabledFields"
+    />
   </Modal>
 </template>
 
@@ -18,6 +23,7 @@ import { required } from "@vuelidate/validators";
 import { referenceRule, nameRule } from "../../vuelidateForm/businessRules.js";
 import { reactive } from "@vue/reactivity";
 import { computed } from "@vue/runtime-core";
+import { canSetApplicationPriority } from "../../infrastructure/permission/usePermission";
 
 export default {
   name: "ModalBasicEditApplication",
@@ -29,7 +35,10 @@ export default {
     const closeModal = () => emit("closeModal");
     const store = useStore();
     const { showSuccessToast, showErrorToast } = ownToast();
-
+    const disabledFields = reactive({
+      person: true,
+      priority: !canSetApplicationPriority(),
+    });
     const rules = reactive({
       name: { required, nameRule },
       reference: { required, referenceRule },
@@ -75,6 +84,7 @@ export default {
       send,
       rules,
       form,
+      disabledFields,
     };
   },
 };

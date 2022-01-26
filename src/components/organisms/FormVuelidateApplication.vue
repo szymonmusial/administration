@@ -27,6 +27,7 @@
         label="Priority"
         optionValue="code"
         v-if="isActiveField('priority')"
+        :disabled="disabledFields.priority"
       />
       <!-- Type -->
       <DropdownForm
@@ -48,7 +49,7 @@
         placeholder="Select a Person"
         label="Person"
         optionValue="name"
-        :disabled="!personIsEditable"
+        :disabled="disabledFields.person"
         v-if="isActiveField('person')"
       />
       <!-- Person list -->
@@ -122,7 +123,7 @@ export default {
     CalendarForm,
     MultiSelectForm,
   },
-  props: ["rules", "fields", "personIsEditable"],
+  props: ["rules", "fields", "personIsEditable", "disabledFields"],
   setup(props, { emit }) {
     //store
     const store = useStore();

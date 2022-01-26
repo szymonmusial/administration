@@ -5,6 +5,7 @@
       @click="addNewApplication"
       :loading="loading"
       className="p-button-large"
+      v-if="showOpenApplicationInNewCard"
     />
     <OwnButton
       label="Add New Applications in the new card"
@@ -21,6 +22,7 @@ import { ref } from "@vue/reactivity";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import OwnButton from "../atoms/OwnButton.vue";
+import { canOpenApplicationInNewCard } from "../../infrastructure/permission/usePermission";
 
 export default {
   name: "ButtonNewApplication",
@@ -29,13 +31,19 @@ export default {
     const router = useRouter();
     const store = useStore();
     const loading = ref(false);
-
+    const showOpenApplicationInNewCard = canOpenApplicationInNewCard();
     const addNewApplication = () => {
       store.commit("setModal", "add");
     };
 
     const addNewApplicationInNewCard = () => router.push("/add");
-    return { addNewApplication, loading, addNewApplicationInNewCard, router };
+    return {
+      addNewApplication,
+      loading,
+      addNewApplicationInNewCard,
+      router,
+      showOpenApplicationInNewCard,
+    };
   },
 };
 </script>
