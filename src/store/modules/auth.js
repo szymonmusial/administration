@@ -11,6 +11,16 @@ const token = {
   },
   getters: {
     getAuth: (state) => state.auth,
+    getUserInfo: (state) => {
+      const userInfo = {
+        FirstName: state.auth.FirstName,
+        LastName: state.auth.LastName,
+        Job: state.auth.Job,
+        Id: state.auth.Id,
+        Name: state.auth.FirstName + " " + state.auth.LastName,
+      };
+      return userInfo;
+    },
     getPermissions: (state) => state.auth.Permissions,
     checkPermission: (state) => (permission) => {
       try {

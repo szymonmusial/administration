@@ -1,21 +1,27 @@
 <template>
   <loading :loadingStatus="appIsLoaded" />
+  <AppToolbar :person="userInfo" @logOut="logOut" />
   <slot></slot>
 </template>
 
 <script>
-import { onMounted, ref } from "@vue/runtime-core";
+import { computed, onMounted, ref } from "@vue/runtime-core";
 import { useStore } from "vuex";
 import ownToast from "../../composables/ownToast";
 import Loading from "../atoms/Loading.vue";
+import AppToolbar from "../atoms/AppToolbar.vue";
 
 export default {
   name: "AppWrapper",
-  components: { Loading },
+  components: { Loading, AppToolbar },
   setup() {
     const store = useStore();
     const { showErrorToast } = ownToast();
+    const userInfo = computed(() => store.getters.getUserInfo);
     const appIsLoaded = ref(false);
+    const logOut = () => {
+      alert("I want Log Out!");
+    };
     onMounted(() => {
       store
         .dispatch("setApplications")
@@ -33,7 +39,7 @@ export default {
         .catch(() => showErrorToast("Error", "Users failed to load"));
     });
 
-    return { appIsLoaded };
+    return { appIsLoaded, userInfo, logOut };
   },
 };
 </script>
