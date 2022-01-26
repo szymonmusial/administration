@@ -7,7 +7,7 @@ import jwt_decode from "jwt-decode";
 
 const token = {
   state: {
-    auth: [],
+    auth: {},
   },
   getters: {
     getAuth: (state) => state.auth,
@@ -19,7 +19,7 @@ const token = {
         return false;
       }
     },
-    checkAuth: (state) => state.auth !== [],
+    checkAuth: (state) => state.auth.Permissions !== undefined,
   },
   mutations: {
     setAuth(state, auth) {
@@ -38,8 +38,8 @@ const token = {
     setAuth(context) {
       const token = getTokenFromCookie();
       if (token) {
-        const p = jwt_decode(token);
-        return context.commit("setAuth", p);
+        const tokenDecode = jwt_decode(token);
+        return context.commit("setAuth", tokenDecode);
       } else {
         return Promise.reject(() => "Token do not exist");
       }

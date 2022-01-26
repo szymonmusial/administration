@@ -21,6 +21,7 @@ export default {
     const { showErrorToast } = ownToast();
     const loadingStatus = computed(() => store.getters.getLoadingStatus);
 
+    // TO DO: wynieś tą logike do innego komponetu
     onMounted(() => {
       store
         .dispatch("setAuth")
