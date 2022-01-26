@@ -1,5 +1,8 @@
 import axiosClient from "../../agent/axiosClient.js";
-import { setCoockie, getCookie } from "../../infrastructure/coockie";
+import {
+  setTokenToCookie,
+  getTokenFromCookie,
+} from "../../infrastructure/coockie";
 import jwt_decode from "jwt-decode";
 
 const token = {
@@ -8,6 +11,15 @@ const token = {
   },
   getters: {
     getAuth: (state) => state.auth,
+    getPermissions: (state) => state.auth.Permissions,
+    checkPermission: (state) => (permission) => {
+      try {
+        return state.auth.Permissions.includes(permission);
+      } catch (e) {
+        return false;
+      }
+    },
+    checkAuth: (state) => state.auth !== [],
   },
   mutations: {
     setAuth(state, auth) {
@@ -17,15 +29,20 @@ const token = {
   actions: {
     setToken(context, id) {
       return axiosClient.get("tokens/" + id).then((response) => {
-        setCoockie("token", response.data.token);
+        setTokenToCookie(response.data.token);
       });
     },
     postLogins(context, logins) {
       return axiosClient.post("auth/", logins);
     },
     setAuth(context) {
-      const token = getCookie("token");
-      context.commit("setAuth", jwt_decode(token));
+      const token = getTokenFromCookie();
+      if (token) {
+        const p = jwt_decode(token);
+        return context.commit("setAuth", p);
+      } else {
+        return Promise.reject(() => "Token do not exist");
+      }
     },
     signIn(context, logins) {
       return context

@@ -1,21 +1,16 @@
-const setCoockie = (name, value) => {
-  document.cookie = name + "=" + value;
+import { useCookies } from "@vueuse/integrations";
+
+const COOKIE_NAME = "JwtCookie";
+const cookies = useCookies([COOKIE_NAME]);
+
+export const setTokenToCookie = (val) => {
+  cookies.set(COOKIE_NAME, val);
 };
 
-const getCookie = (cname) => {
-  let name = cname + "=";
-  let decodedCookie = decodeURIComponent(document.cookie);
-  let ca = decodedCookie.split(";");
-  for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) == " ") {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
+export const getTokenFromCookie = () => {
+  return cookies.get(COOKIE_NAME) || "";
 };
 
-export { setCoockie, getCookie };
+export const removeTokenFromCookie = () => {
+  return cookies.remove(COOKIE_NAME);
+};
