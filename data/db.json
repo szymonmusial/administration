@@ -11,7 +11,10 @@
       "department": "Dział Badawczo-Rozwojowy",
       "filing_date": "2022-01-02T23:00:00.000Z",
       "event_date": "10-01-2020",
-      "subscriptionList": ["Kuba Musiał", "Szymon Musiał"]
+      "subscriptionList": [
+        "Kuba Musiał",
+        "Szymon Musiał"
+      ]
     },
     {
       "id": "1",
@@ -68,7 +71,10 @@
       "filing_date": "2022-01-21T23:00:00.000Z",
       "event_date": "2022-01-21T23:00:00.000Z",
       "id": "noFYMsW",
-      "subscriptionList": ["Szymon Musiał", "Kuba Musiał"]
+      "subscriptionList": [
+        "Szymon Musiał",
+        "Kuba Musiał"
+      ]
     },
     {
       "name": "Wielki test ale 2",
@@ -80,7 +86,10 @@
       "filing_date": "2022-01-08T23:00:00.000Z",
       "event_date": "2022-01-08T23:00:00.000Z",
       "id": "i-fdjgR",
-      "subscriptionList": ["Kuba Musiał", "Szymon Musiał"]
+      "subscriptionList": [
+        "Kuba Musiał",
+        "Szymon Musiał"
+      ]
     },
     {
       "name": "dsd",
@@ -181,7 +190,10 @@
       "department": "Support",
       "filing_date": "2022-01-23T23:00:00.000Z",
       "event_date": "2022-01-15T23:00:00.000Z",
-      "subscriptionList": ["Szymon Musiał", "Kuba Musiał"],
+      "subscriptionList": [
+        "Szymon Musiał",
+        "Kuba Musiał"
+      ],
       "id": "n5UGX77"
     },
     {
@@ -193,7 +205,10 @@
       "department": "Dział Badawczo-Rozwojowy",
       "filing_date": "2022-01-23T23:00:00.000Z",
       "event_date": "2022-01-22T23:00:00.000Z",
-      "subscriptionList": ["Szymon Musiał", "Kuba Musiał"],
+      "subscriptionList": [
+        "Szymon Musiał",
+        "Kuba Musiał"
+      ],
       "id": "9B9nEth"
     },
     {
@@ -205,7 +220,10 @@
       "department": "Support",
       "filing_date": "2022-01-23T23:00:00.000Z",
       "event_date": "2022-01-22T23:00:00.000Z",
-      "subscriptionList": ["Szymon Musiał", "Kuba Musiał"],
+      "subscriptionList": [
+        "Szymon Musiał",
+        "Kuba Musiał"
+      ],
       "id": "phQ9Pd_"
     },
     {
@@ -217,7 +235,10 @@
       "department": "Dział Badawczo-Rozwojowy",
       "filing_date": "2022-01-23T23:00:00.000Z",
       "event_date": "2022-01-23T23:00:00.000Z",
-      "subscriptionList": ["Szymon Musiał", "Kuba Musiał"],
+      "subscriptionList": [
+        "Szymon Musiał",
+        "Kuba Musiał"
+      ],
       "id": "ygl6AxV"
     },
     {
@@ -268,6 +289,38 @@
     {
       "id": 2,
       "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJEYW5pZWwiLCJJZCI6IjE2IiwiTGFzdE5hbWUiOiJGb29iYXIiLCJKb2IiOiJNb2RlcmF0b3IiLCJQZXJtaXNzaW9ucyI6IkNhbk1vZGlmeVVzZXJJbmZvIiwibmJmIjoxNjQzMTA4MzU2LCJleHAiOjE2NDc0MjgzNTYsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAvIn0.NzlG0z7od_l_6lS4z8dqH2Z8GpAPbVtcRE4Rrle2_Rw"
+    }
+  ],
+  "auth": [
+    {
+      "login": "a",
+      "password": "a",
+      "id": 2
+    },
+    {
+      "login": "a",
+      "password": "a",
+      "id": 3
+    },
+    {
+      "login": "a",
+      "password": "a",
+      "id": 4
+    },
+    {
+      "login": "a",
+      "password": "a",
+      "id": 5
+    },
+    {
+      "login": "a",
+      "password": "a",
+      "id": 6
+    },
+    {
+      "login": "a",
+      "password": "a",
+      "id": 7
     }
   ]
 }

@@ -9,16 +9,26 @@
 import SignInBanner from "../components/molecules/SignInBanner.vue";
 import SignInForm from "../components/molecules/SignInForm.vue";
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+import ownToast from "../composables/ownToast";
 
 export default {
   name: "SignIn",
   components: { SignInForm, SignInBanner },
   setup() {
     const store = useStore();
-    const signin = () => {
-      store.dispatch("signIn").then(() => {
-        alert("zalogowano!");
-      });
+    const router = useRouter();
+    const { showErrorToast, showSuccessToast } = ownToast();
+    const signin = (form) => {
+      store
+        .dispatch("signIn", form)
+        .then(() => {
+          showSuccessToast("Zalogowano!", "Zostałeś pomyślnie zalogowany!");
+          router.push("/");
+        })
+        .catch(() => {
+          showErrorToast("Błąd", "Nie udało się zalogować!");
+        });
     };
     return { signin };
   },

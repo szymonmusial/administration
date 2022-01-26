@@ -13,16 +13,26 @@ const token = {
     },
   },
   actions: {
-    getToken(context, id) {
+    setToken(context, id) {
       return axiosClient.get("tokens/" + id).then((response) => {
         setCoockie("token", response.data.token);
       });
     },
-    signIn(context) {
-      context.dispatch("getToken", 0).then(() => {
-        const token = getCookie("token");
-        context.commit("setAuth", jwt_decode(token));
-      });
+    postLogins(context, logins) {
+      return axiosClient.post("auth/", logins);
+    },
+    setAuth(context) {
+      const token = getCookie("token");
+      context.commit("setAuth", jwt_decode(token));
+    },
+    signIn(context, logins) {
+      return context
+        .dispatch("postLogins", logins)
+        .then(() =>
+          context
+            .dispatch("setToken", 0)
+            .then(() => context.dispatch("setAuth"))
+        );
     },
   },
 };
