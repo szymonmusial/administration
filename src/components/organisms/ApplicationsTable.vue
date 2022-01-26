@@ -9,7 +9,7 @@
         </template>
       </Column>
       <Column field="application_type" header="Application Type"> </Column>
-      <Column field="person" header="Person"> </Column>
+      <Column field="person" header="Person" v-if="modifyUserInfo"> </Column>
       <Column field="department" header="Department"> </Column>
       <Column header="Subscriptions">
         <template #body="slotProps">
@@ -17,6 +17,7 @@
             :id="slotProps.data.id"
             label="Show"
             editType="ListSubscription"
+            :disabled="!modifyUserInfo"
           /> </template
       ></Column>
       <Column header="Filing Date">
@@ -61,6 +62,7 @@
             label="Person Edit"
             editType="personEdit"
             className="p-button-help"
+            :disabled="!modifyUserInfo"
           /> </template
       ></Column>
     </DataTable>
@@ -77,6 +79,7 @@ import DateToText from "../atoms/DateToText.vue";
 
 import { useStore } from "vuex";
 import { computed } from "@vue/runtime-core";
+import { canModifyUserInfo } from "../../infrastructure/permission/usePermission";
 
 export default {
   name: "ApplicationsTable",
@@ -90,8 +93,8 @@ export default {
   setup() {
     const store = useStore();
     const applications = computed(() => store.getters.getApplications);
-
-    return { applications };
+    const modifyUserInfo = canModifyUserInfo();
+    return { applications, modifyUserInfo };
   },
 };
 </script>

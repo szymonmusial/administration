@@ -1,5 +1,10 @@
 <template>
-  <OwnButton @click="editApplication" :label="label" :className="className" />
+  <OwnButton
+    @click="editApplication"
+    :label="label"
+    :className="className"
+    :disabled="disabled"
+  />
 </template>
 
 <script>
@@ -9,7 +14,7 @@ import { useStore } from "vuex";
 export default {
   name: "ButtonEditApplication",
   components: { OwnButton },
-  props: ["id", "label", "editType", "className"],
+  props: ["id", "label", "editType", "className", "disabled"],
   setup(props) {
     const store = useStore();
     const editApplication = () => {
