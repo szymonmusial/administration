@@ -59,7 +59,7 @@ const token = {
       const token = getTokenFromCookie();
       if (token) {
         const tokenDecode: Auth = jwt_decode(token);
-        return context.commit("setAuth", tokenDecode);
+        return context.commit(authCommit.setAuth, tokenDecode);
       } else {
         return Promise.reject(() => "Token do not exist");
       }
@@ -67,7 +67,7 @@ const token = {
     signIn(context, logins: Logins) {
       return context
         .dispatch("postLogins", logins)
-        .then(() => context.dispatch("setToken", 0).then(() => context.dispatch("setAuth")));
+        .then(() => context.dispatch(authDispatch.setToken, 0).then(() => context.dispatch(authDispatch.setAuth)));
     },
     signOut(context) {
       removeTokenFromCookie();

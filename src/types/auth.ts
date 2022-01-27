@@ -26,6 +26,7 @@ export type UserInfo = {
   Name: string;
 };
 
+// ============= ACTION NAMES ==============
 // Actions
 export type AuthDispatch = {
   setToken: Object;
