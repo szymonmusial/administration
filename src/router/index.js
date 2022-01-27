@@ -38,6 +38,8 @@ router.beforeEach((to, from, next) => {
       case "AddNewApplication":
         if (canOpenApplicationInNewCard()) {
           next();
+        } else {
+          next({ path: "/" });
         }
         break;
       default:
