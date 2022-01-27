@@ -30,4 +30,21 @@ axiosClient.interceptors.request.use(
   }
 );
 
+// FAKE JwtToken
+
+axiosClient.interceptors.response.use(
+  async (response) => {
+    const responseURL = response.request.responseURL;
+    if (responseURL == "http://localhost:3000/auth/") {
+      const data = response.data;
+      console.log("FAKE JwtToken");
+      console.log(data);
+    }
+    return response;
+  },
+  function (error) {
+    return Promise.reject(error);
+  }
+);
+
 export default axiosClient;

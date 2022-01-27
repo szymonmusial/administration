@@ -1,7 +1,7 @@
 const perm = {
   canModifyUserInfo: "CanModifyUserInfo",
   canSetApplicationPriority: "CanSetApplicationPriority",
-  canOpenApplicationInNewCard: "CanOpenApplicationInNewCardd",
+  canOpenApplicationInNewCard: "CanOpenApplicationInNewCard",
 };
 
 export { perm };

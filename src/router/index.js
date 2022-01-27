@@ -49,4 +49,5 @@ router.beforeEach((to, from, next) => {
     next({ path: "/signin" });
   }
 });
+
 export default router;
