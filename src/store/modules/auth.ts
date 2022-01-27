@@ -1,4 +1,4 @@
-import axiosClient from "../../agent/axiosClient.js";
+import axiosClient from "@/agent/axiosClient";
 import {
   setTokenToCookie,
   getTokenFromCookie,

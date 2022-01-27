@@ -17,7 +17,7 @@ import { useStore } from "vuex";
 import ownToast from "../composables/ownToast";
 
 import { required } from "@vuelidate/validators";
-import { referenceRule, nameRule } from "../vuelidateForm/businessRules.js";
+import { referenceRule, nameRule } from "@/vuelidateForm/businessRules";
 import { reactive } from "@vue/reactivity";
 import { useRouter } from "vue-router";
 import AppWrapper from "../components/organisms/AppWrapper.vue";

@@ -13,7 +13,7 @@ export default function () {
   };
 
   const showToast = (type, title, content) => {
-    let toastModel = {
+    const toastModel = {
       severity: "success",
       summary: "Tytuł",
       detail: "opis",

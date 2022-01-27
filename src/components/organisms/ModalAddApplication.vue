@@ -21,9 +21,9 @@ import { useStore } from "vuex";
 import ownToast from "../../composables/ownToast";
 
 import { required } from "@vuelidate/validators";
-import { referenceRule, nameRule } from "../../vuelidateForm/businessRules.js";
+import { referenceRule, nameRule } from "@/vuelidateForm/businessRules";
 import { reactive } from "@vue/reactivity";
-import { canSetApplicationPriority } from "../../infrastructure/permission/usePermission";
+import { canSetApplicationPriority } from "@/infrastructure/permission/usePermission";
 import { computed } from "@vue/runtime-core";
 
 export default {

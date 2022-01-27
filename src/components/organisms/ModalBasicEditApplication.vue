@@ -17,13 +17,13 @@
 import Modal from "../atoms/Modal.vue";
 import FormVuelidateApplication from "./FormVuelidateApplication.vue";
 import { useStore } from "vuex";
-import ownToast from "../../composables/ownToast";
+import ownToast from "@/composables/ownToast";
 
 import { required } from "@vuelidate/validators";
-import { referenceRule, nameRule } from "../../vuelidateForm/businessRules.js";
+import { referenceRule, nameRule } from "@/vuelidateForm/businessRules";
 import { reactive } from "@vue/reactivity";
 import { computed } from "@vue/runtime-core";
-import { canSetApplicationPriority } from "../../infrastructure/permission/usePermission";
+import { canSetApplicationPriority } from "@/infrastructure/permission/usePermission";
 
 export default {
   name: "ModalBasicEditApplication",

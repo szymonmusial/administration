@@ -1,4 +1,4 @@
-import axiosClient from "../../agent/axiosClient.js";
+import axiosClient from "@/agent/axiosClient";
 
 const applications = {
   state: {
@@ -15,7 +15,7 @@ const applications = {
       state.applications = applications;
     },
     setApplication(state, application) {
-      let index = state.applications.findIndex(
+      const index = state.applications.findIndex(
         (item) => item.id == application.id
       );
       state.applications[index] = application;
