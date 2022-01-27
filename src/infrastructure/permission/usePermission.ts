@@ -1,20 +1,18 @@
 import store from "../../store";
 import { perm } from "./permissionList";
+import { Permissions } from "@/types/auth";
 
-const userPermissions = () => store.getters.getPermissions;
+const userPermissions = (): Permissions => store.getters.getPermissions;
 
-const authenticated = () => store.getters.checkAuth;
+const authenticated = (): boolean => store.getters.checkAuth;
 
-const checkPermission = (permission) =>
-  store.getters.checkPermission(permission);
+const checkPermission = (permission: string): boolean => store.getters.checkPermission(permission);
 
 const canModifyUserInfo = () => checkPermission(perm.canModifyUserInfo);
 
-const canSetApplicationPriority = () =>
-  checkPermission(perm.canSetApplicationPriority);
+const canSetApplicationPriority = () => checkPermission(perm.canSetApplicationPriority);
 
-const canOpenApplicationInNewCard = () =>
-  checkPermission(perm.canOpenApplicationInNewCard);
+const canOpenApplicationInNewCard = () => checkPermission(perm.canOpenApplicationInNewCard);
 
 export {
   userPermissions,
