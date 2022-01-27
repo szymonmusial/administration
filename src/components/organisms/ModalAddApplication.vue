@@ -9,6 +9,7 @@
       :rules="rules"
       :fields="form"
       :disabledFields="disabledFields"
+      :userInfo="userInfo"
     />
   </Modal>
 </template>
@@ -23,6 +24,7 @@ import { required } from "@vuelidate/validators";
 import { referenceRule, nameRule } from "../../vuelidateForm/businessRules.js";
 import { reactive } from "@vue/reactivity";
 import { canSetApplicationPriority } from "../../infrastructure/permission/usePermission";
+import { computed } from "@vue/runtime-core";
 
 export default {
   name: "ModalAddApplication",
@@ -34,7 +36,6 @@ export default {
     const closeModal = () => emit("closeModal");
     const store = useStore();
     const { showSuccessToast, showErrorToast } = ownToast();
-
     const disabledFields = reactive({
       person: true,
       priority: !canSetApplicationPriority(),
@@ -52,16 +53,18 @@ export default {
       subscriptionList: {},
     });
 
-    const form = reactive({
-      name: "",
-      reference: "",
-      priority: "false",
-      type: "",
-      person: "",
-      department: "",
-      filingDate: "",
-      eventDate: "",
-    });
+    const form = computed(() =>
+      reactive({
+        name: "",
+        reference: "",
+        priority: "false",
+        type: "",
+        person: "",
+        department: "",
+        filingDate: "",
+        eventDate: "",
+      })
+    );
 
     const send = (data) => {
       store.commit("setLoadingStatus", false);

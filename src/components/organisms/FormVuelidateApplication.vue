@@ -123,7 +123,7 @@ export default {
     CalendarForm,
     MultiSelectForm,
   },
-  props: ["rules", "fields", "personIsEditable", "disabledFields"],
+  props: ["rules", "fields", "disabledFields"],
   setup(props, { emit }) {
     //store
     const store = useStore();
@@ -174,17 +174,15 @@ export default {
       reference: props.fields.reference,
       priority: props.fields.priority,
       type: props.fields.type,
-      person: props.fields.person,
+      person: store.getters.getUserInfo.Name,
       department: props.fields.department,
       filingDate: props.fields.filingDate,
       eventDate: props.fields.eventDate,
       subscriptionList: props.fields.subscriptionList,
     });
 
-    form.person = "Szymon Musiał";
-
     const v$ = useVuelidate(props.rules, form);
-
+    console.log(form);
     const submitted = ref(false);
     const handleSubmit = (isFormValid) => {
       submitted.value = true;
