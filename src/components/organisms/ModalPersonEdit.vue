@@ -8,7 +8,7 @@
       @send="send"
       :rules="rules"
       :fields="form"
-      :personIsEditable="true"
+      :disabledFields="disabledFields"
     />
   </Modal>
 </template>
@@ -33,6 +33,10 @@ export default {
     const closeModal = () => emit("closeModal");
     const store = useStore();
     const { showSuccessToast, showErrorToast } = ownToast();
+
+    const disabledFields = reactive({
+      person: true,
+    });
 
     const rules = reactive({
       subscriptionList: {},
@@ -77,6 +81,7 @@ export default {
       send,
       rules,
       form,
+      disabledFields,
     };
   },
 };

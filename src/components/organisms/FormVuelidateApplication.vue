@@ -196,7 +196,6 @@ export default {
       priorityOptions,
       applicationTypeOptions,
       personOptions,
-
       departmentOptions,
       dateToday,
       eventDateActive,
