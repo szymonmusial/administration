@@ -4,12 +4,7 @@
     title="Edit date Application"
     class="p-fluid p-formgrid p-grid basic-application-form"
   >
-    <FormVuelidateApplication
-      @send="send"
-      :rules="rules"
-      :fields="form"
-      :disabledFields="disabledFields"
-    />
+    <FormVuelidateApplication @send="send" :rules="rules" :fields="form" :disabledFields="disabledFields" />
   </Modal>
 </template>
 
@@ -17,7 +12,7 @@
 import Modal from "../atoms/Modal.vue";
 import FormVuelidateApplication from "./FormVuelidateApplication.vue";
 import { useStore } from "vuex";
-import ownToast from "../../composables/ownToast";
+import ownToast from "../../composables/ownToast/ownToast";
 
 import { required } from "@vuelidate/validators";
 import { reactive } from "@vue/reactivity";
@@ -42,13 +37,9 @@ export default {
       subscriptionList: {},
       person: { required },
     });
-    const applicationEditingId = computed(
-      () => store.getters.getEditingApplicationId
-    );
+    const applicationEditingId = computed(() => store.getters.getEditingApplicationId);
 
-    const dataFromApplication = computed(() =>
-      store.getters.getApplication(applicationEditingId.value)
-    );
+    const dataFromApplication = computed(() => store.getters.getApplication(applicationEditingId.value));
 
     const form = reactive({
       subscriptionList: dataFromApplication.value.subscriptionList,

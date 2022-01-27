@@ -10,7 +10,7 @@ import SignInBanner from "../components/molecules/SignInBanner.vue";
 import SignInForm from "../components/molecules/SignInForm.vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
-import ownToast from "../composables/ownToast";
+import ownToast from "../composables/ownToast/ownToast";
 
 export default {
   name: "SignIn",

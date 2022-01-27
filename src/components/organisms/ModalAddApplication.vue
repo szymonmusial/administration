@@ -1,9 +1,5 @@
 <template>
-  <Modal
-    @closeModal="closeModal"
-    title="Add New Applications"
-    class="p-fluid p-formgrid p-grid basic-application-form"
-  >
+  <Modal @closeModal="closeModal" title="Add New Applications" class="p-fluid p-formgrid p-grid basic-application-form">
     <FormVuelidateApplication
       @send="send"
       :rules="rules"
@@ -18,7 +14,7 @@
 import Modal from "../atoms/Modal.vue";
 import FormVuelidateApplication from "./FormVuelidateApplication.vue";
 import { useStore } from "vuex";
-import ownToast from "../../composables/ownToast";
+import ownToast from "../../composables/ownToast/ownToast";
 
 import { required } from "@vuelidate/validators";
 import { referenceRule, nameRule } from "@/vuelidateForm/businessRules";

@@ -1,12 +1,7 @@
 <template>
   <app-wrapper>
     <div class="p-dialog-content p-component p-dialog AddNewApplication">
-      <FormVuelidateApplication
-        @send="send"
-        :rules="rules"
-        :fields="form"
-        :disabledFields="disabledFields"
-      />
+      <FormVuelidateApplication @send="send" :rules="rules" :fields="form" :disabledFields="disabledFields" />
     </div>
   </app-wrapper>
 </template>
@@ -14,7 +9,7 @@
 <script>
 import FormVuelidateApplication from "../components/organisms/FormVuelidateApplication.vue";
 import { useStore } from "vuex";
-import ownToast from "../composables/ownToast";
+import ownToast from "../composables/ownToast/ownToast";
 
 import { required } from "@vuelidate/validators";
 import { referenceRule, nameRule } from "@/vuelidateForm/businessRules";

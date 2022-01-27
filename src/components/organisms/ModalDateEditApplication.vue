@@ -12,7 +12,7 @@
 import Modal from "../atoms/Modal.vue";
 import FormVuelidateApplication from "./FormVuelidateApplication.vue";
 import { useStore } from "vuex";
-import ownToast from "../../composables/ownToast";
+import ownToast from "../../composables/ownToast/ownToast";
 
 import { required } from "@vuelidate/validators";
 import { reactive } from "@vue/reactivity";
@@ -33,13 +33,9 @@ export default {
       filingDate: { required },
       eventDate: { required },
     });
-    const applicationEditingId = computed(
-      () => store.getters.getEditingApplicationId
-    );
+    const applicationEditingId = computed(() => store.getters.getEditingApplicationId);
 
-    const dataFromApplication = computed(() =>
-      store.getters.getApplication(applicationEditingId.value)
-    );
+    const dataFromApplication = computed(() => store.getters.getApplication(applicationEditingId.value));
 
     const form = reactive({
       filingDate: dataFromApplication.value.filing_date,

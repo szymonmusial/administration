@@ -3,17 +3,6 @@ export interface AuthState {
   auth: Auth;
 }
 
-// Getters
-export interface Getters {
-  getAuth: (state: AuthState) => UserInfo;
-  getUserInfo: (state: AuthState) => UserInfo;
-  getPermissions: (state: AuthState) => Permissions;
-  checkPermission: (state: AuthState) => (permission: string) => boolean;
-  checkAuth: (state: AuthState) => boolean;
-}
-
-export type GetPermissions = (state: AuthState) => Permissions;
-
 export type Auth = {
   FirstName: string;
   LastName: string;
