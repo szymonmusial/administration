@@ -109,11 +109,12 @@ import CalendarForm from "../molecules/CalendarForm.vue";
 import MultiSelectForm from "../molecules/MultiSelectForm.vue";
 
 import { reactive, ref } from "@vue/reactivity";
-import { computed } from "@vue/runtime-core";
+import { computed, PropType } from "@vue/runtime-core";
 import { useStore } from "vuex";
 
 import { useVuelidate } from "@vuelidate/core";
 import { FormApplication } from "@/store/modules/application/applicationType";
+import { priorityOptions, applicationTypeOptions } from "@/vuelidateForm/businessRules";
 
 export default {
   name: "FormVuelidateApplication",
@@ -124,23 +125,21 @@ export default {
     CalendarForm,
     MultiSelectForm,
   },
-  props: ["rules", "fields", "disabledFields"],
+  props: {
+    rules: {
+      type: Object,
+      required: true,
+    },
+    fields: {
+      type: Object as PropType<FormApplication>,
+      required: true,
+    },
+    disabledFields: Object,
+  },
   setup(props, { emit }) {
     //store
     const store = useStore();
 
-    //Priority
-    const priorityOptions = ref([
-      { name: "Yes", code: true },
-      { name: "No", code: false },
-    ]);
-
-    //Application Type
-    const applicationTypeOptions = computed(() => {
-      return store.getters.getApplicationTypes;
-    });
-
-    // TO DO!!!: change on mounted
     const personOptions = computed(() => {
       return store.getters.getUsers;
     });
@@ -151,25 +150,13 @@ export default {
     });
 
     //Today Date
-    const dateToday = ref(new Date());
+    const dateToday = ref<Date>(new Date());
 
-    const eventDateActive = computed(() => {
-      if (form.filingDate !== "") {
-        return true;
-      } else {
-        return false;
-      }
-    });
+    const eventDateActive = computed((): boolean => form.filingDate !== "");
 
-    const isActiveField = (key) => {
-      if (Object.prototype.hasOwnProperty.call(props.rules, key)) {
-        return true;
-      }
-      return false;
-    };
+    const isActiveField = (key: string): boolean => Object.prototype.hasOwnProperty.call(props.rules, key);
 
     //Vuelidate
-
     const form = reactive<FormApplication>({
       name: props.fields.name,
       reference: props.fields.reference,
@@ -183,9 +170,8 @@ export default {
     });
 
     const v$ = useVuelidate(props.rules, form);
-    console.log(form);
-    const submitted = ref(false);
-    const handleSubmit = (isFormValid) => {
+    const submitted = ref<boolean>(false);
+    const handleSubmit = (isFormValid: boolean) => {
       submitted.value = true;
       if (isFormValid) {
         emit("send", form);
