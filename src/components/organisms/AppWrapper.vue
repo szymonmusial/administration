@@ -4,13 +4,14 @@
   <slot></slot>
 </template>
 
-<script>
+<script lang="ts">
 import { computed, onMounted, ref } from "@vue/runtime-core";
 import { useStore } from "vuex";
 import ownToast from "../../composables/ownToast/ownToast";
 import Loading from "../atoms/Loading.vue";
 import AppToolbar from "../atoms/AppToolbar.vue";
 import { useRouter } from "vue-router";
+import { UserInfo, authDispatch } from "@/store/modules/auth/authType";
 
 export default {
   name: "AppWrapper",
@@ -19,10 +20,10 @@ export default {
     const store = useStore();
     const router = useRouter();
     const { showErrorToast, showSuccessToast } = ownToast();
-    const userInfo = computed(() => store.getters.getUserInfo);
-    const appIsLoaded = ref(false);
+    const userInfo = computed((): UserInfo => store.getters.getUserInfo);
+    const appIsLoaded = ref<boolean>(false);
     const logOut = () => {
-      store.dispatch("signOut");
+      store.dispatch(authDispatch.signOut);
       router.push("/signin");
       showSuccessToast("Logged out", "You have been logged out");
     };

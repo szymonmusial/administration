@@ -30,11 +30,11 @@ export type UserInfo = {
 // ============= ACTION NAMES ==============
 // Actions
 export type AuthDispatch = {
-  setToken: Object;
-  postLogins: Object;
-  setAuth: Object;
-  signIn: Object;
-  signOut: Object;
+  setToken: string;
+  postLogins: string;
+  setAuth: string;
+  signIn: string;
+  signOut: string;
 };
 
 export const authDispatch: AuthDispatch = {
@@ -47,7 +47,7 @@ export const authDispatch: AuthDispatch = {
 
 // Mutations
 export type AuthCommit = {
-  setAuth: Object;
+  setAuth: string;
 };
 
 export const authCommit: AuthCommit = {
@@ -56,11 +56,11 @@ export const authCommit: AuthCommit = {
 
 // Getters
 export type AuthGetters = {
-  getAuth: Object;
-  getUserInfo: Object;
-  getPermissions: Object;
-  checkPermission: Object;
-  checkAuth: Object;
+  getAuth: string;
+  getUserInfo: string;
+  getPermissions: string;
+  checkPermission: string;
+  checkAuth: string;
 };
 
 export const authGetters: AuthGetters = {

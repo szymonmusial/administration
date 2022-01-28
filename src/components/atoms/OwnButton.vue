@@ -2,13 +2,17 @@
   <Button :label="label" class="button" :loading="loading" :class="className" />
 </template>
 
-<script>
+<script lang="ts">
 // TO DO: replace with one button
 import Button from "primevue/button";
 export default {
   name: "OwnButton",
   components: { Button },
-  props: ["loading", "label", "type", "className"],
+  props: {
+    loading: Boolean,
+    label: String,
+    className: String,
+  },
 };
 </script>
 <style scoped>

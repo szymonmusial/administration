@@ -31,7 +31,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Button from "primevue/button";
 import InputFormText from "../molecules/InputFormText.vue";
 
@@ -39,12 +39,14 @@ import { required } from "@vuelidate/validators";
 import { reactive, ref } from "@vue/reactivity";
 
 import { useVuelidate } from "@vuelidate/core";
+import { Logins } from "@/store/modules/auth/authType";
+
 export default {
   name: "FormSignIn",
   components: { Button, InputFormText },
   emits: ["send"],
   setup(props, { emit }) {
-    const form = reactive({
+    const form: Logins = reactive({
       login: "",
       password: "",
     });
@@ -54,8 +56,8 @@ export default {
     });
 
     const v$ = useVuelidate(rules, form);
-    const submitted = ref(false);
-    const handleSubmit = (isFormValid) => {
+    const submitted = ref<boolean>(false);
+    const handleSubmit = (isFormValid: boolean) => {
       submitted.value = true;
       if (isFormValid) {
         emit("send", form);

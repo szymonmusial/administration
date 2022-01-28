@@ -8,24 +8,23 @@
     </template>
 
     <template #end>
-      <own-button
-        label="Log Out"
-        icon="pi"
-        className="p-button-secondary"
-        @click="$emit('logOut')"
-      />
+      <OwnButton label="Log Out" icon="pi" className="p-button-secondary" @click="$emit('logOut')" />
     </template>
   </Toolbar>
 </template>
 
-<script>
+<script lang="ts">
 import Toolbar from "primevue/toolbar";
 
 import OwnButton from "./OwnButton.vue";
+import { UserInfo } from "@/store/modules/auth/authType";
+import { PropType } from "vue";
 
 export default {
   name: "AppToolbar",
-  props: ["person"],
+  props: {
+    person: Object as PropType<UserInfo>,
+  },
   emits: ["logOut"],
   components: { Toolbar, OwnButton },
 };

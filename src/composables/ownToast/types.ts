@@ -3,10 +3,11 @@ export enum ToastType {
   error = "error",
 }
 
-export type Toast = (title: string, content: string, type: ToastType | undefined) => void;
+export type Toast = (title: string, content: string) => void;
+export type BaseToast = (title: string, content: string, type: ToastType | undefined) => void;
 
 export type OwnToast = {
-  showToast: Toast;
+  showToast: BaseToast;
   showSuccessToast: Toast;
   showErrorToast: Toast;
 };

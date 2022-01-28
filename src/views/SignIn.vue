@@ -5,12 +5,13 @@
   </div>
 </template>
 
-<script>
-import SignInBanner from "../components/molecules/SignInBanner.vue";
+<script lang="ts">
+import SignInBanner from "../components/atoms/SignInBanner.vue";
 import SignInForm from "../components/molecules/SignInForm.vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import ownToast from "../composables/ownToast/ownToast";
+import { Logins, authDispatch } from "@/store/modules/auth/authType";
 
 export default {
   name: "SignIn",
@@ -19,9 +20,9 @@ export default {
     const store = useStore();
     const router = useRouter();
     const { showErrorToast, showSuccessToast } = ownToast();
-    const signin = (form) => {
+    const signin = (form: Logins) => {
       store
-        .dispatch("signIn", form)
+        .dispatch(authDispatch.signIn, form)
         .then(() => {
           showSuccessToast("Zalogowano!", "Zostałeś pomyślnie zalogowany!");
           router.push("/");
