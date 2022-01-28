@@ -20,6 +20,7 @@ export default {
     const router = useRouter();
     const { showErrorToast, showSuccessToast } = ownToast();
     const userInfo = computed(() => store.getters.getUserInfo);
+
     const appIsLoaded = ref(false);
     const logOut = () => {
       store.dispatch("signOut");

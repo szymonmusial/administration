@@ -3,7 +3,7 @@ export enum ToastType {
   error = "error",
 }
 
-export type Toast = (type: ToastType, title: string, content: string | undefined) => void;
+export type Toast = (title: string, content: string, type: ToastType | undefined) => void;
 
 export type OwnToast = {
   showToast: Toast;

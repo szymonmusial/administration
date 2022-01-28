@@ -6,14 +6,14 @@ const ownToast = (): OwnToast => {
   const time: number = 3000;
 
   const showSuccessToast: Toast = (title, content) => {
-    showToast(ToastType.success, title, content);
+    showToast(title, content, ToastType.success);
   };
 
-  const showErrorToast: Toast = (title: string, content: string) => {
-    showToast(ToastType.error, title, content);
+  const showErrorToast: Toast = (title, content) => {
+    showToast(title, content, ToastType.error);
   };
 
-  const showToast: Toast = (type, title, content) => {
+  const showToast: Toast = (title, content, type) => {
     const toastModel = {
       severity: ToastType.success,
       summary: "Tytuł",
