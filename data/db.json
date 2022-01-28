@@ -6,14 +6,15 @@
       "reference_number": "11111-90",
       "priority": true,
       "application_type": "Wniosek Ogólny",
-      "person": "Szymon Musiał",
+      "person": "Tom Example",
       "person_id": 0,
       "department": "Dział Badawczo-Rozwojowy",
       "filing_date": "2022-01-02T23:00:00.000Z",
       "event_date": "10-01-2020",
       "subscriptionList": [
         "Kuba Musiał",
-        "Szymon Musiał"
+        "Szymon Musiał",
+        "Tom Example"
       ]
     },
     {

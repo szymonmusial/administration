@@ -5,7 +5,7 @@
 <script lang="ts">
 import OwnButton from "../atoms/OwnButton.vue";
 import { useStore } from "vuex";
-import { modalType } from "@/store/modules/app/appTypes";
+import { modalType, appStore } from "@/store/modules/app/appTypes";
 import { PropType } from "@vue/runtime-core";
 
 export default {
@@ -24,8 +24,8 @@ export default {
   setup(props) {
     const store = useStore();
     const editApplication = () => {
-      store.commit("setModal", props.editType);
-      store.commit("setEditingApplicationId", props.id);
+      store.commit(appStore.commit.setModal, props.editType);
+      store.commit(appStore.commit.setEditingApplicationId, props.id);
     };
 
     return { editApplication };
