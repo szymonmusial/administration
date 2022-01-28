@@ -12,6 +12,18 @@ export type Application = {
   subscriptionList: Array<string>;
 };
 
+export type FormApplication = {
+  name: string;
+  reference: string;
+  priority: boolean;
+  type: string;
+  person: string;
+  department: string;
+  filingDate: Date | string;
+  eventDate: Date | string;
+  subscriptionList: Array<string>;
+};
+
 export type Applications = Array<Application>;
 
 export interface ApplicationsState {

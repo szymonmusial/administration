@@ -113,6 +113,7 @@ import { computed } from "@vue/runtime-core";
 import { useStore } from "vuex";
 
 import { useVuelidate } from "@vuelidate/core";
+import { FormApplication } from "@/store/modules/application/applicationType";
 
 export default {
   name: "FormVuelidateApplication",
@@ -169,19 +170,7 @@ export default {
 
     //Vuelidate
 
-    type ApplicationType = {
-      name: string;
-      reference: string;
-      priority: boolean;
-      type: string;
-      person: string;
-      department: string;
-      filingDate: Date | string;
-      eventDate: Date | string;
-      subscriptionList: Array<string>;
-    };
-
-    const form = reactive<ApplicationType>({
+    const form = reactive<FormApplication>({
       name: props.fields.name,
       reference: props.fields.reference,
       priority: props.fields.priority,

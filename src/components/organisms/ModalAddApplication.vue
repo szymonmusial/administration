@@ -10,7 +10,7 @@
   </Modal>
 </template>
 
-<script>
+<script lang="ts">
 import Modal from "../atoms/Modal.vue";
 import FormVuelidateApplication from "./FormVuelidateApplication.vue";
 import { useStore } from "vuex";
@@ -20,7 +20,9 @@ import { required } from "@vuelidate/validators";
 import { referenceRule, nameRule } from "@/vuelidateForm/businessRules";
 import { reactive } from "@vue/reactivity";
 import { canSetApplicationPriority } from "@/infrastructure/permission/usePermission";
-import { computed } from "@vue/runtime-core";
+
+import { FormApplication, applicationStore } from "@/store/modules/application/applicationType";
+import { appStore } from "@/store/modules/app/appTypes";
 
 export default {
   name: "ModalAddApplication",
@@ -49,21 +51,20 @@ export default {
       subscriptionList: {},
     });
 
-    const form = computed(() =>
-      reactive({
-        name: "",
-        reference: "",
-        priority: false,
-        type: "",
-        person: "",
-        department: "",
-        filingDate: "",
-        eventDate: "",
-      })
-    );
+    const form: FormApplication = reactive({
+      name: "",
+      reference: "",
+      priority: false,
+      type: "",
+      person: "",
+      department: "",
+      filingDate: "",
+      eventDate: "",
+      subscriptionList: [],
+    });
 
-    const send = (data) => {
-      store.commit("setLoadingStatus", false);
+    const send = (data: FormApplication) => {
+      store.commit(appStore.commit.setLoadingStatus, false);
       const application = {
         name: data.name,
         reference_number: data.reference,
@@ -76,7 +77,7 @@ export default {
         subscriptionList: data.subscriptionList,
       };
       store
-        .dispatch("addApplication", application)
+        .dispatch(applicationStore.dispatch.addApplication, application)
         .then(() => {
           showSuccessToast("Success", "Dodano Wniosek!");
           closeModal();
@@ -84,7 +85,7 @@ export default {
         .catch(() => {
           showErrorToast("Error", "Nie udało się dodać wniosku");
         })
-        .finally(() => store.commit("setLoadingStatus", true));
+        .finally(() => store.commit(appStore.commit.setLoadingStatus, true));
     };
     return {
       closeModal,
