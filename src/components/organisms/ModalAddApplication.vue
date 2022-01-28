@@ -53,7 +53,7 @@ export default {
       reactive({
         name: "",
         reference: "",
-        priority: "false",
+        priority: false,
         type: "",
         person: "",
         department: "",

@@ -279,6 +279,22 @@
         "Tom Example"
       ],
       "id": "hH5xTdw"
+    },
+    {
+      "name": "test priority 2",
+      "reference_number": "11111-11",
+      "priority": true,
+      "application_type": "Bank Pomysłów",
+      "person": "Tom Example",
+      "department": "Support",
+      "filing_date": "2022-01-27T23:00:00.000Z",
+      "event_date": "2022-01-27T23:00:00.000Z",
+      "subscriptionList": [
+        "Szymon Musiał",
+        "Kuba Musiał",
+        "Tom Example"
+      ],
+      "id": "0dwwkZh"
     }
   ],
   "departments": [
@@ -658,6 +674,11 @@
       "login": "dsd",
       "password": "dsd",
       "id": 68
+    },
+    {
+      "login": "dsdsd",
+      "password": "bhj",
+      "id": 69
     }
   ]
 }

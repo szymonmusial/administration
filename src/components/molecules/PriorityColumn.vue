@@ -8,7 +8,6 @@
 <script>
 import OwnButton from "../atoms/OwnButton.vue";
 
-// FIX IT: On this moment priority is db its "true" not boolean true
 export default {
   name: "PriorityColumn",
   components: { OwnButton },

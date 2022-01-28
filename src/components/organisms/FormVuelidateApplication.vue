@@ -101,7 +101,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Button from "primevue/button";
 import InputFormText from "../molecules/InputFormText.vue";
 import DropdownForm from "../molecules/DropdownForm.vue";
@@ -130,8 +130,8 @@ export default {
 
     //Priority
     const priorityOptions = ref([
-      { name: "Yes", code: "true" },
-      { name: "No", code: "false" },
+      { name: "Yes", code: true },
+      { name: "No", code: false },
     ]);
 
     //Application Type
@@ -169,7 +169,19 @@ export default {
 
     //Vuelidate
 
-    const form = reactive({
+    type ApplicationType = {
+      name: string;
+      reference: string;
+      priority: boolean;
+      type: string;
+      person: string;
+      department: string;
+      filingDate: Date | string;
+      eventDate: Date | string;
+      subscriptionList: Array<string>;
+    };
+
+    const form = reactive<ApplicationType>({
       name: props.fields.name,
       reference: props.fields.reference,
       priority: props.fields.priority,
