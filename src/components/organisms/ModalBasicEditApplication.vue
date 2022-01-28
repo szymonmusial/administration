@@ -8,7 +8,7 @@
   </Modal>
 </template>
 
-<script>
+<script lang="ts">
 import Modal from "../atoms/Modal.vue";
 import FormVuelidateApplication from "./FormVuelidateApplication.vue";
 import { useStore } from "vuex";
@@ -19,6 +19,7 @@ import { referenceRule, nameRule } from "@/vuelidateForm/businessRules";
 import { reactive } from "@vue/reactivity";
 import { computed } from "@vue/runtime-core";
 import { canSetApplicationPriority } from "@/infrastructure/permission/usePermission";
+import { Application, FormApplication, applicationStore } from "@/store/modules/application/applicationType";
 
 export default {
   name: "ModalBasicEditApplication",
@@ -39,9 +40,9 @@ export default {
       reference: { required, referenceRule },
       priority: { required },
     });
-    const applicationEditingId = computed(() => store.getters.getEditingApplicationId);
+    const applicationEditingId = computed((): Number => store.getters.getEditingApplicationId);
 
-    const dataFromApplication = computed(() => store.getters.getApplication(applicationEditingId.value));
+    const dataFromApplication = computed((): Application => store.getters.getApplication(applicationEditingId.value));
 
     const form = reactive({
       name: dataFromApplication.value.name,
@@ -49,9 +50,7 @@ export default {
       priority: dataFromApplication.value.priority,
     });
 
-    console.log(form);
-
-    const send = (data) => {
+    const send = (data: FormApplication) => {
       store.commit("setLoadingStatus", false);
       const application = {
         id: applicationEditingId.value,
@@ -60,7 +59,7 @@ export default {
         priority: data.priority,
       };
       store
-        .dispatch("editApplication", application)
+        .dispatch(applicationStore.dispatch.editApplication, application)
         .then(() => {
           showSuccessToast("Success", "Zmodyfikowane zadanie!");
           closeModal();
