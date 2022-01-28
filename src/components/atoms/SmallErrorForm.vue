@@ -1,23 +1,28 @@
 <template>
-  <small
-    v-if="showError || input.$pending.$response"
-    class="p-error form__small-error"
-  >
+  <small v-if="showError || input.$pending.$response" class="p-error form__small-error">
     {{ message }}
   </small>
 </template>
 
-<script>
-import { computed } from "@vue/runtime-core";
+<script lang="ts">
+import { computed, PropType } from "@vue/runtime-core";
+import { Validation, ErrorObject } from "@vuelidate/core";
+
 export default {
   name: "SmallErrorForm",
-  props: ["input", "showError", "label"],
+  props: {
+    input: {
+      type: Object as PropType<Validation>,
+      required: true,
+    },
+    showError: Boolean,
+    label: String,
+  },
 
   setup(props) {
     const message = computed(() => {
-      const errorArray = props.input.$silentErrors;
-
-      let messages = "";
+      const errorArray: Array<ErrorObject> = props.input.$silentErrors;
+      let messages: string = "";
       for (let index = 0; index < errorArray.length; index++) {
         messages = messages + errorArray[index].$message;
       }

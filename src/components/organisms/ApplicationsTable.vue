@@ -22,20 +22,12 @@
       ></Column>
       <Column header="Filing Date">
         <template #body="slotProps">
-          <DateToText
-            :date="slotProps.data.filing_date"
-            locales="pl-PL"
-            dateStyle="short"
-          />
+          <DateToText :date="slotProps.data.filing_date" locales="pl-PL" dateStyle="short" />
         </template>
       </Column>
       <Column header="Event Date">
         <template #body="slotProps">
-          <DateToText
-            :date="slotProps.data.event_date"
-            locales="pl-PL"
-            dateStyle="short"
-          />
+          <DateToText :date="slotProps.data.event_date" locales="pl-PL" dateStyle="short" />
         </template>
       </Column>
       <Column>
@@ -49,11 +41,7 @@
       ></Column>
       <Column>
         <template #body="slotProps">
-          <ButtonOpenModal
-            :id="slotProps.data.id"
-            label="Date Edit"
-            editType="dateEdit"
-          /> </template
+          <ButtonOpenModal :id="slotProps.data.id" label="Date Edit" editType="dateEdit" /> </template
       ></Column>
       <Column>
         <template #body="slotProps">

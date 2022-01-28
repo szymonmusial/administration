@@ -1,13 +1,14 @@
 <template>
-  <label :class="{ 'p-error': showError }" class="form__label">{{
-    label
-  }}</label>
+  <label :class="{ 'p-error': showError }" class="form__label">{{ label }}</label>
 </template>
 
 <script>
 export default {
   name: "LabelForm",
-  props: ["showError", "label"],
+  props: {
+    showError: String,
+    label: String,
+  },
 };
 </script>
 

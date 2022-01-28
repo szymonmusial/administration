@@ -13,7 +13,7 @@ import Dialog from "primevue/dialog";
 export default {
   name: "Modal",
   components: { Dialog },
-  props: ["title"],
+  props: { title: String },
   setup(props, { emit }) {
     const closeModal = () => emit("closeModal");
     return { closeModal };

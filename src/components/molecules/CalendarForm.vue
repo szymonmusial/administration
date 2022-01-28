@@ -28,16 +28,7 @@ export default {
   name: "CalendarForm",
   components: { LabelForm, SmallErrorForm, Calendar },
   emits: ["emitInput"],
-  props: [
-    "input",
-    "submitted",
-    "label",
-    "modelValue",
-    "maxDate",
-    "manualInput",
-    "minDate",
-    "disabled",
-  ],
+  props: ["input", "submitted", "label", "modelValue", "maxDate", "manualInput", "minDate", "disabled"],
   setup(props, { emit }) {
     const emitInput = (event) => {
       emit("update:modelValue", event);
