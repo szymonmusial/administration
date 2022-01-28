@@ -6,7 +6,7 @@
     <Calendar
       :class="{ 'p-invalid': showError }"
       :modelValue="stringToDate(modelValue)"
-      @update:modelValue="emitInput"
+      @update:modelValue="$emit('update:modelValue', $event)"
       :maxDate="stringToDate(maxDate)"
       :manualInput="manualInput"
       :minDate="stringToDate(minDate)"
@@ -17,40 +17,47 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Calendar from "primevue/calendar";
 import LabelForm from "../atoms/LabelForm.vue";
 
-import { computed } from "@vue/runtime-core";
+import { computed, PropType } from "@vue/runtime-core";
 import SmallErrorForm from "../atoms/SmallErrorForm.vue";
+
+import { Validation } from "@vuelidate/core";
 
 export default {
   name: "CalendarForm",
   components: { LabelForm, SmallErrorForm, Calendar },
-  emits: ["emitInput"],
-  props: ["input", "submitted", "label", "modelValue", "maxDate", "manualInput", "minDate", "disabled"],
-  setup(props, { emit }) {
-    const emitInput = (event) => {
-      emit("update:modelValue", event);
-      console.log(event);
-    };
-    const stringToDate = (string) => {
-      let date = new Date(string);
-      if (!isNaN(date)) {
+  emits: ["update:modelValue"],
+  props: {
+    input: {
+      type: Object as PropType<Validation>,
+      required: true,
+    },
+    submitted: {
+      type: Boolean,
+      required: true,
+    },
+    label: String,
+    modelValue: [String, Date],
+    maxDate: String,
+    manualInput: Boolean,
+    minDate: String,
+    disabled: Boolean,
+  },
+  setup(props) {
+    const stringToDate = (string: string): Date | null => {
+      let date: Date = new Date(string);
+      if (!isNaN(+date)) {
         return date;
       } else {
-        return "";
+        return null;
       }
     };
-    const showError = computed(() => {
-      if (props.input.$invalid && props.submitted) {
-        return true;
-      } else {
-        false;
-      }
-    });
+    const showError = computed((): boolean => props.input.$invalid && props.submitted);
 
-    return { emitInput, showError, stringToDate };
+    return { showError, stringToDate };
   },
 };
 </script>

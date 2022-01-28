@@ -18,19 +18,24 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Dropdown from "primevue/dropdown";
 import LabelForm from "../atoms/LabelForm.vue";
 
-import { computed } from "@vue/runtime-core";
+import { computed, PropType } from "@vue/runtime-core";
 import SmallErrorForm from "../atoms/SmallErrorForm.vue";
+
+import { Validation } from "@vuelidate/core";
 
 export default {
   name: "DropdownForm",
   components: { Dropdown, LabelForm, SmallErrorForm },
   emits: ["emitInput"],
   props: {
-    input: Object,
+    input: {
+      type: Object as PropType<Validation>,
+      required: true,
+    },
     submitted: Boolean,
     label: String,
     modelValue: [String, Boolean],
@@ -48,7 +53,7 @@ export default {
     },
   },
   setup(props) {
-    const showError = computed(() => props.input.$invalid && props.submitted);
+    const showError = computed((): boolean => props.input.$invalid && props.submitted);
     return { showError };
   },
 };

@@ -18,19 +18,23 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import MultiSelect from "primevue/multiselect";
 import LabelForm from "../atoms/LabelForm.vue";
 
-import { computed } from "@vue/runtime-core";
+import { computed, PropType } from "@vue/runtime-core";
 import SmallErrorForm from "../atoms/SmallErrorForm.vue";
+import { Validation } from "@vuelidate/core";
 
 export default {
   name: "MultiSelectForm",
   components: { MultiSelect, LabelForm, SmallErrorForm },
   emits: ["emitInput"],
   props: {
-    input: Object,
+    input: {
+      type: Object as PropType<Validation>,
+      required: true,
+    },
     submitted: Boolean,
     label: String,
     modelValue: Array,

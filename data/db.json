@@ -4,7 +4,7 @@
       "id": "0",
       "name": "Wniosek o dofinansowanie ",
       "reference_number": "11111-90",
-      "priority": "true",
+      "priority": true,
       "application_type": "Wniosek Ogólny",
       "person": "Szymon Musiał",
       "person_id": 0,
@@ -25,13 +25,13 @@
       "person": "Szymon Musiał",
       "person_id": 1,
       "department": "Dział Badawczo-Rozwojowy",
-      "filing_date": "19-01-2020",
+      "filing_date": "2022-01-10T23:00:00.000Z",
       "event_date": "01-01-2020"
     },
     {
       "name": "Wielki test!",
       "reference_number": "11111-22",
-      "priority": "false",
+      "priority": false,
       "application_type": "Bank Pomysłów",
       "person": "Szymon Musiał",
       "department": "Support",
@@ -42,7 +42,7 @@
     {
       "name": " Advanced Card ale inne",
       "reference_number": "11111-32",
-      "priority": "true",
+      "priority": true,
       "application_type": "Bank Pomysłów",
       "person": "Szymon Musiał",
       "department": "Dział Badawczo-Rozwojowy",
@@ -53,7 +53,7 @@
     {
       "name": " Advanced Card ale innee",
       "reference_number": "11111-56",
-      "priority": "true",
+      "priority": true,
       "application_type": "Bank Pomysłów",
       "person": "Szymon Musiał",
       "department": "Dział Badawczo-Rozwojowy",
@@ -64,7 +64,7 @@
     {
       "name": " Advanced Card ale inne",
       "reference_number": "11111-23",
-      "priority": "true",
+      "priority": true,
       "application_type": "Bank Pomysłów",
       "person": "Kuba Musiał",
       "department": "Dział Badawczo-Rozwojowy",
@@ -79,7 +79,7 @@
     {
       "name": "Wielki test ale 2",
       "reference_number": "11111-22",
-      "priority": "true",
+      "priority": true,
       "application_type": "Bank Pomysłów",
       "person": "Szymon Musiał",
       "department": "Dział Badawczo-Rozwojowy",
@@ -94,7 +94,7 @@
     {
       "name": "dsd",
       "reference_number": "11111-22",
-      "priority": "true",
+      "priority": true,
       "application_type": "Bank Pomysłów",
       "person": "Szymon Musiał",
       "department": "Dział Badawczo-Rozwojowy",
@@ -105,7 +105,7 @@
     {
       "name": "dsdsd",
       "reference_number": "22222-22",
-      "priority": "true",
+      "priority": true,
       "application_type": "Zgłoszenie problemów",
       "person": "Szymon Musiał",
       "department": "Support",
@@ -116,7 +116,7 @@
     {
       "name": "test spiners",
       "reference_number": "11111-00",
-      "priority": "true",
+      "priority": true,
       "application_type": "Wniosek Ogólny",
       "person": "Szymon Musiał",
       "department": "Dział Badawczo-Rozwojowy",
@@ -127,7 +127,7 @@
     {
       "name": "",
       "reference_number": "00000-00",
-      "priority": "true",
+      "priority": true,
       "application_type": "Bank Pomysłów",
       "person": "Szymon Musiał",
       "department": "Dział Badawczo-Rozwojowy",
@@ -138,31 +138,31 @@
     {
       "name": "Test props",
       "reference_number": "00000-11",
-      "priority": "true",
+      "priority": true,
       "application_type": "Bank Pomysłów",
       "person": "Szymon Musiał",
       "department": "Dział Badawczo-Rozwojowy",
-      "filing_date": "2022-01-23T23:00:00.000Z",
-      "event_date": "2022-01-22T23:00:00.000Z",
+      "filing_date": "2022-01-27T23:00:00.000Z",
+      "event_date": "2022-01-27T23:00:00.000Z",
       "id": "9jNJMsr"
     },
     {
       "name": "Test props",
       "reference_number": "66666-66",
-      "priority": "true",
+      "priority": true,
       "person": "Szymon Musiał",
       "id": "PogW5uU"
     },
     {
       "name": "Wielki test!",
       "reference_number": "11111-22",
-      "priority": "false",
+      "priority": false,
       "id": "eBEBhNK"
     },
     {
       "name": "dsd",
       "reference_number": "00000-00",
-      "priority": "true",
+      "priority": true,
       "application_type": "Bank Pomysłów",
       "person": "Szymon Musiał",
       "department": "Support",
@@ -173,7 +173,7 @@
     {
       "name": "dsdsdsd",
       "reference_number": "00000-00",
-      "priority": "false",
+      "priority": false,
       "application_type": "Bank Pomysłów",
       "person": "Szymon Musiał",
       "department": "Dział Badawczo-Rozwojowy",
@@ -184,7 +184,7 @@
     {
       "name": "test list",
       "reference_number": "00000-00",
-      "priority": "true",
+      "priority": true,
       "application_type": "Bank Pomysłów",
       "person": "Szymon Musiał",
       "department": "Support",
@@ -199,7 +199,7 @@
     {
       "name": "test rutera",
       "reference_number": "00000-22",
-      "priority": "true",
+      "priority": true,
       "application_type": "Wniosek Ogólny",
       "person": "Szymon Musiał",
       "department": "Dział Badawczo-Rozwojowy",
@@ -214,7 +214,7 @@
     {
       "name": "dsds",
       "reference_number": "00000-00",
-      "priority": "true",
+      "priority": true,
       "application_type": "Wniosek Ogólny",
       "person": "Szymon Musiał",
       "department": "Support",
@@ -229,7 +229,7 @@
     {
       "name": "Test routingu",
       "reference_number": "00000-22",
-      "priority": "true",
+      "priority": true,
       "application_type": "Bank Pomysłów",
       "person": "Szymon Musiał",
       "department": "Dział Badawczo-Rozwojowy",
@@ -251,6 +251,34 @@
       "filing_date": "2022-01-24T23:00:00.000Z",
       "event_date": "2022-01-24T23:00:00.000Z",
       "id": "Fr7nauz"
+    },
+    {
+      "name": "test",
+      "reference_number": "00000-00",
+      "priority": true,
+      "application_type": "Bank Pomysłów",
+      "person": "Tom Example",
+      "department": "Kadry",
+      "filing_date": "2022-01-27T23:00:00.000Z",
+      "event_date": "2022-01-27T23:00:00.000Z",
+      "subscriptionList": [
+        "Tom Example"
+      ],
+      "id": "_7eqpx3"
+    },
+    {
+      "name": "test priority",
+      "reference_number": "00000-00",
+      "priority": "true",
+      "application_type": "Bank Pomysłów",
+      "person": "Tom Example",
+      "department": "Support",
+      "filing_date": "2022-01-27T23:00:00.000Z",
+      "event_date": "2022-01-27T23:00:00.000Z",
+      "subscriptionList": [
+        "Tom Example"
+      ],
+      "id": "hH5xTdw"
     }
   ],
   "departments": [
@@ -625,6 +653,11 @@
       "login": "dsd",
       "password": "dsd",
       "id": 67
+    },
+    {
+      "login": "dsd",
+      "password": "dsd",
+      "id": 68
     }
   ]
 }

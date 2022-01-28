@@ -9,32 +9,40 @@
       :type="texttype"
       :class="[{ 'p-invalid': showError }, className]"
       :modelValue="modelValue"
-      @input="emitInput"
+      @input="$emit('update:modelValue', $event.target.value)"
     />
     <SmallErrorForm :input="input" :showError="showError" :label="label" />
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import InputText from "primevue/inputtext";
 import LabelForm from "../atoms/LabelForm.vue";
 
-import { computed } from "@vue/runtime-core";
+import { computed, PropType } from "@vue/runtime-core";
 import SmallErrorForm from "../atoms/SmallErrorForm.vue";
+
+import { Validation } from "@vuelidate/core";
 
 export default {
   name: "InputFormText",
   components: { InputText, LabelForm, SmallErrorForm },
-  emits: ["emitInput"],
-  props: ["input", "submitted", "label", "modelValue", "className", "texttype"],
-  setup(props, { emit }) {
-    const emitInput = (event) => {
-      emit("update:modelValue", event.target.value);
-    };
-
+  emits: ["update:modelValue"],
+  props: {
+    input: {
+      type: Object as PropType<Validation>,
+      required: true,
+    },
+    submitted: Boolean,
+    label: String,
+    modelValue: String,
+    className: String,
+    texttype: String,
+  },
+  setup(props) {
     const showError = computed(() => props.input.$invalid && props.submitted);
 
-    return { emitInput, showError };
+    return { showError };
   },
 };
 </script>
