@@ -57,7 +57,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 
@@ -68,6 +68,7 @@ import DateToText from "../atoms/DateToText.vue";
 import { useStore } from "vuex";
 import { computed } from "@vue/runtime-core";
 import { canModifyUserInfo } from "../../infrastructure/permission/usePermission";
+import { Applications } from "@/store/modules/application/applicationType";
 
 export default {
   name: "ApplicationsTable",
@@ -80,7 +81,7 @@ export default {
   },
   setup() {
     const store = useStore();
-    const applications = computed(() => store.getters.getApplications);
+    const applications = computed((): Applications => store.getters.getApplications);
     const modifyUserInfo = canModifyUserInfo();
     return { applications, modifyUserInfo };
   },
