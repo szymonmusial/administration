@@ -15,9 +15,7 @@ const applications = {
       state.applications = applications;
     },
     setApplication(state, application) {
-      const index = state.applications.findIndex(
-        (item) => item.id == application.id
-      );
+      const index = state.applications.findIndex((item) => item.id == application.id);
       state.applications[index] = application;
     },
     addApplication(state, application) {

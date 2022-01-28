@@ -1,3 +1,5 @@
+//Change this this into enum
+
 const applicationTypes = {
   state: {
     applicationTypes: [
