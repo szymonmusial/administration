@@ -23,6 +23,7 @@ import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import OwnButton from "../atoms/OwnButton.vue";
 import { canOpenApplicationInNewCard } from "../../infrastructure/permission/usePermission";
+import { appStore, modalType } from "@/store/modules/app/appTypes";
 
 export default {
   name: "ButtonNewApplication",
@@ -33,7 +34,7 @@ export default {
     const loading = ref<boolean>(false);
     const showOpenApplicationInNewCard = canOpenApplicationInNewCard();
     const addNewApplication = () => {
-      store.commit("setModal", "add");
+      store.commit(appStore.commit.setModal, modalType.add);
     };
 
     const addNewApplicationInNewCard = () => router.push("/add");

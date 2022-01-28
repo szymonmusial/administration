@@ -1,7 +1,9 @@
-const app = {
+import { App, AppState, modalType } from "./appTypes";
+
+const app: App = {
   state: {
     loadingStatus: true,
-    modal: "close",
+    modal: modalType.close,
     editingApplicationId: null,
   },
   getters: {
