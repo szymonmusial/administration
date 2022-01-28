@@ -10,7 +10,7 @@ import ProgressSpinner from "primevue/progressspinner";
 export default {
   name: "Loading",
   components: { ProgressSpinner },
-  props: ["loadingStatus"],
+  props: { loadingStatus: Boolean },
 };
 </script>
 

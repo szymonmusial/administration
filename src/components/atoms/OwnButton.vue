@@ -3,7 +3,6 @@
 </template>
 
 <script lang="ts">
-// TO DO: replace with one button
 import Button from "primevue/button";
 export default {
   name: "OwnButton",
