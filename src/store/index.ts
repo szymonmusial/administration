@@ -3,7 +3,7 @@ import applications from "./modules/applications";
 import departments from "./modules/departments";
 import users from "./modules/users";
 import applicationType from "./modules/applicationType";
-import auth from "./modules/auth";
+import auth from "./modules/auth/auth";
 
 export default createStore({
   state: {

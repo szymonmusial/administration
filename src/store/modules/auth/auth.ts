@@ -1,8 +1,16 @@
 import axiosClient from "@/agent/axiosClient";
-import { setTokenToCookie, getTokenFromCookie, removeTokenFromCookie } from "../../infrastructure/coockie";
+import { setTokenToCookie, getTokenFromCookie, removeTokenFromCookie } from "@/infrastructure/coockie";
 import jwt_decode from "jwt-decode";
 
-import { AuthState, UserInfo, Permissions, Auth, Logins, authDispatch, authCommit } from "@/types/auth";
+import {
+  AuthState,
+  UserInfo,
+  Permissions,
+  Auth,
+  Logins,
+  authDispatch,
+  authCommit,
+} from "@/store/modules/auth/authType";
 
 const state: AuthState = {
   auth: {

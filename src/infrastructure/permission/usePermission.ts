@@ -1,6 +1,6 @@
 import store from "../../store";
 import { perm } from "./permissionList";
-import { Permissions } from "@/types/auth";
+import { Permissions } from "@/store/modules/auth/authType";
 
 const userPermissions = (): Permissions => store.getters.getPermissions;
 
