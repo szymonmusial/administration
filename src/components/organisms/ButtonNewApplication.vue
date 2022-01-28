@@ -16,7 +16,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { ref } from "@vue/reactivity";
 
 import { useStore } from "vuex";
@@ -30,7 +30,7 @@ export default {
   setup() {
     const router = useRouter();
     const store = useStore();
-    const loading = ref(false);
+    const loading = ref<boolean>(false);
     const showOpenApplicationInNewCard = canOpenApplicationInNewCard();
     const addNewApplication = () => {
       store.commit("setModal", "add");
