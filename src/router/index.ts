@@ -3,6 +3,7 @@ import Applications from "../views/Applications.vue";
 import AddNewApplication from "../views/AddNewApplication.vue";
 import SignIn from "../views/SignIn.vue";
 import { authenticated, canOpenApplicationInNewCard } from "../infrastructure/permission/usePermission";
+import store from "./../store";
 
 const routes = [
   {
@@ -25,6 +26,15 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const exp = store.getters.getExp;
+  if (Date.now() <= exp) {
+    store.dispatch("signOut");
+  } else {
+    next();
+  }
 });
 
 router.beforeEach((to, from, next) => {

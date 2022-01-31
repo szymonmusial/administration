@@ -20,6 +20,7 @@ const state: AuthState = {
     Id: null,
     Name: "",
     Permissions: [],
+    exp: null,
   },
 };
 
@@ -27,6 +28,7 @@ const token = {
   state,
   getters: {
     getAuth: (state: AuthState): UserInfo => state.auth,
+    getExp: (state: AuthState): number | null => state.auth.exp,
     getUserInfo: (state: AuthState): UserInfo => {
       const userInfo = {
         FirstName: state.auth.FirstName,

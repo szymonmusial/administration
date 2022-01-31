@@ -10,6 +10,7 @@ export type Auth = {
   Id: number | null;
   Name: string;
   Permissions: Permissions;
+  exp: number | null;
 };
 
 export type Permissions = Array<string>;
