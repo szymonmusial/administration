@@ -24,7 +24,6 @@ const ownToast = (): OwnToast => {
     if (type != undefined) {
       toastModel.severity = type;
     }
-    debugger;
     if (title != undefined) {
       toastModel.summary = title;
     }

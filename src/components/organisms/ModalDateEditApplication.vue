@@ -51,7 +51,6 @@ export default {
         filing_date: data.filingDate,
         event_date: data.eventDate,
       };
-      debugger;
       store
         .dispatch(applicationStore.dispatch.editApplication, application)
         .then(() => {
