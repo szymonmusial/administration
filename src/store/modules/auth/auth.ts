@@ -47,7 +47,13 @@ const token = {
           return false;
         }
       },
-    checkAuth: (state: AuthState): boolean => state.auth.Permissions !== undefined,
+    checkAuth: (state: AuthState): boolean => {
+      if (state.auth.Permissions === undefined) {
+        return false;
+      } else {
+        return !!state.auth.Permissions.length;
+      }
+    },
   },
   mutations: {
     setAuth(state: AuthState, auth: Auth) {

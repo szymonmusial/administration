@@ -2,10 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Applications from "../views/Applications.vue";
 import AddNewApplication from "../views/AddNewApplication.vue";
 import SignIn from "../views/SignIn.vue";
-import {
-  authenticated,
-  canOpenApplicationInNewCard,
-} from "../infrastructure/permission/usePermission";
+import { authenticated, canOpenApplicationInNewCard } from "../infrastructure/permission/usePermission";
 
 const routes = [
   {
@@ -32,7 +29,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const toName = to.name;
-
+  console.error(authenticated());
   if (authenticated() || to.name === "SignIn") {
     switch (toName) {
       case "AddNewApplication":
