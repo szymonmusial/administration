@@ -31,7 +31,7 @@ const token = {
     getExp: (state: AuthState): number | null => state.auth.exp,
     isTokenExpired: (state: AuthState): boolean => {
       if (state.auth.exp !== null) {
-        return Date.now() <= state.auth.exp;
+        return Date.now() >= state.auth.exp * 1000;
       } else {
         return false;
       }

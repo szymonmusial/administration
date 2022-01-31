@@ -28,13 +28,16 @@ const router = createRouter({
   routes,
 });
 
+/*
 router.beforeEach((to, from, next) => {
-  if (store.getters.isTokenExpired) {
+  if (!store.getters.isTokenExpired && !(to.name === "SignIn")) {
     store.dispatch("signOut");
+    next({ path: "/signin" });
   } else {
     next();
   }
 });
+*/
 
 router.beforeEach((to, from, next) => {
   const toName = to.name;
