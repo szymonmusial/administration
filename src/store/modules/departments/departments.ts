@@ -1,4 +1,5 @@
 import axiosClient from "@/agent/axiosClient";
+import { StoreDepartments } from "./departmentsType";
 
 const departments = {
   state: {

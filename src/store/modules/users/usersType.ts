@@ -3,9 +3,9 @@ export type User = {
   id: number;
 };
 
-type Users = Array<User>;
+export type Users = Array<User>;
 
-type UserInternalState = {
+export type UserInternalState = {
   users: User[];
 };
 
