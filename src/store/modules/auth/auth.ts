@@ -29,6 +29,13 @@ const token = {
   getters: {
     getAuth: (state: AuthState): UserInfo => state.auth,
     getExp: (state: AuthState): number | null => state.auth.exp,
+    isTokenExpired: (state: AuthState): boolean => {
+      if (state.auth.exp !== null) {
+        return Date.now() <= state.auth.exp;
+      } else {
+        return false;
+      }
+    },
     getUserInfo: (state: AuthState): UserInfo => {
       const userInfo = {
         FirstName: state.auth.FirstName,

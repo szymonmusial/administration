@@ -29,8 +29,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const exp = store.getters.getExp;
-  if (Date.now() <= exp) {
+  if (store.getters.isTokenExpired) {
     store.dispatch("signOut");
   } else {
     next();
