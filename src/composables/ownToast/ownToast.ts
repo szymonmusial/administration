@@ -1,5 +1,5 @@
 import { useToast } from "primevue/usetoast";
-import { ToastType, Toast, OwnToast, BaseToast } from "./types";
+import { ToastType, Toast, OwnToast } from "./types";
 
 const ownToast = (): OwnToast => {
   const toast = useToast();
@@ -13,7 +13,7 @@ const ownToast = (): OwnToast => {
     showToast(title, content, ToastType.error);
   };
 
-  const showToast: BaseToast = (title, content, type) => {
+  const showToast: Toast = (title, content, type) => {
     const toastModel = {
       severity: ToastType.success,
       summary: "Tytuł",
@@ -35,6 +35,7 @@ const ownToast = (): OwnToast => {
     debugger;
     toast.add(toastModel);
   };
+
   return {
     showToast,
     showSuccessToast,
