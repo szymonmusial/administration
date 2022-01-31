@@ -32,7 +32,6 @@ const ownToast = (): OwnToast => {
     if (content != undefined) {
       toastModel.detail = content;
     }
-    debugger;
     toast.add(toastModel);
   };
 
