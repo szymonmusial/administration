@@ -1,19 +1,21 @@
-type User = {
+export type User = {
   name: string;
   id: number;
 };
 
 type Users = Array<User>;
 
-type UsersState = {
-  state: {
-    users: Array<User>;
-  };
+type UserInternalState = {
+  users: User[];
+};
+
+export type UsersState = {
+  state: UserInternalState;
   getters: {
-    getUsers: (state: Users) => any;
+    getUsers: (state: UserInternalState) => Users;
   };
   mutations: {
-    setUsers(state: Users, users: Users): void;
+    setUsers(state: UserInternalState, users: Users): void;
   };
   actions: {
     setUsers(context: any): Promise<void>;

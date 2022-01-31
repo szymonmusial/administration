@@ -1,6 +1,7 @@
 import axiosClient from "@/agent/axiosClient";
+import { User, UsersState } from "./usersType";
 
-const users /*: UsersState*/ = {
+const users: UsersState = {
   state: {
     users: [],
   },
