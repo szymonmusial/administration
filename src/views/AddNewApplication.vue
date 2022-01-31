@@ -6,7 +6,7 @@
   </app-wrapper>
 </template>
 
-<script>
+<script lang="ts">
 import FormVuelidateApplication from "../components/organisms/FormVuelidateApplication.vue";
 import { useStore } from "vuex";
 import ownToast from "../composables/ownToast/ownToast";
@@ -17,6 +17,8 @@ import { reactive } from "@vue/reactivity";
 import { useRouter } from "vue-router";
 import AppWrapper from "../components/organisms/AppWrapper.vue";
 import { canSetApplicationPriority } from "../infrastructure/permission/usePermission";
+import { FormApplication, applicationStore } from "@/store/modules/application/applicationType";
+import { appStore } from "@/store/modules/app/appTypes";
 
 export default {
   name: "AddNewApplication",
@@ -46,7 +48,7 @@ export default {
       subscriptionList: {},
     });
 
-    const form = reactive({
+    const form: FormApplication = reactive({
       name: "",
       reference: "",
       priority: false,
@@ -55,10 +57,11 @@ export default {
       department: "",
       filingDate: "",
       eventDate: "",
+      subscriptionList: [],
     });
 
-    const send = (data) => {
-      store.commit("setLoadingStatus", false);
+    const send = (data: FormApplication) => {
+      store.commit(appStore.commit.setLoadingStatus, false);
       const application = {
         name: data.name,
         reference_number: data.reference,
@@ -71,7 +74,7 @@ export default {
         subscriptionList: data.subscriptionList,
       };
       store
-        .dispatch("addApplication", application)
+        .dispatch(applicationStore.dispatch.addApplication, application)
         .then(() => {
           showSuccessToast("Success", "Dodano Wniosek!");
           close();
@@ -79,7 +82,7 @@ export default {
         .catch(() => {
           showErrorToast("Error", "Nie udało się dodać wniosku");
         })
-        .finally(() => store.commit("setLoadingStatus", true));
+        .finally(() => store.commit(appStore.commit.setLoadingStatus, true));
     };
     return {
       close,
