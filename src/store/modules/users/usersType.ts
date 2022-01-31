@@ -13,6 +13,7 @@ export type UsersState = {
   state: UserInternalState;
   getters: {
     getUsers: (state: UserInternalState) => Users;
+    checkUsersAreInTheStore: (state: UserInternalState) => boolean;
   };
   mutations: {
     setUsers(state: UserInternalState, users: Users): void;

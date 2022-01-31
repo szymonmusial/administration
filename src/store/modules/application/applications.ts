@@ -8,6 +8,7 @@ const state: ApplicationsState = {
 const applications = {
   state,
   getters: {
+    checkApplicationsAreInTheStore: (state: ApplicationsState) => !!state.applications.length,
     getApplications: (state: ApplicationsState) => state.applications,
     getApplication: (state: ApplicationsState) => (id: number) => {
       return state.applications.find((item) => item.id === id);

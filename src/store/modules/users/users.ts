@@ -7,6 +7,7 @@ const users: UsersState = {
   },
   getters: {
     getUsers: (state) => state.users,
+    checkUsersAreInTheStore: (state) => !!state.users.length,
   },
   mutations: {
     setUsers(state, users) {

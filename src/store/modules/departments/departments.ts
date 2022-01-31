@@ -7,6 +7,7 @@ const departments = {
   },
   getters: {
     getDepartments: (state) => state.departments,
+    checkDepartmentsAreInTheStore: (state) => !!state.departments.length,
   },
   mutations: {
     setDepartments(state, departments) {

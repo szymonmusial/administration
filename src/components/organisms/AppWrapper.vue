@@ -21,21 +21,28 @@ export default {
     const router = useRouter();
     const { showErrorToast, showSuccessToast } = ownToast();
     const userInfo = computed((): UserInfo => store.getters.getUserInfo);
-    const appIsLoaded = ref<boolean>(false);
+    const appIsLoaded = ref<boolean>(true);
     const logOut = () => {
       store.dispatch(authDispatch.signOut);
       router.push("/signin");
       showSuccessToast("Logged out", "You have been logged out");
     };
     onMounted(() => {
-      store
-        .dispatch("setApplications")
-        .then(() => {
-          appIsLoaded.value = true;
-        })
-        .catch(() => showErrorToast("Critical Error", "Application failed to load"));
-      store.dispatch("setDepartments").catch(() => showErrorToast("Error", "Departments failed to load"));
-      store.dispatch("setUsers").catch(() => showErrorToast("Error", "Users failed to load"));
+      if (
+        !store.getters.checkApplicationsAreInTheStore &&
+        !store.getters.checkUsersAreInTheStore &&
+        !store.getters.checkDepartmentsAreInTheStore
+      ) {
+        appIsLoaded.value = false;
+        store
+          .dispatch("setApplications")
+          .then(() => {
+            appIsLoaded.value = true;
+          })
+          .catch(() => showErrorToast("Critical Error", "Application failed to load"));
+        store.dispatch("setDepartments").catch(() => showErrorToast("Error", "Departments failed to load"));
+        store.dispatch("setUsers").catch(() => showErrorToast("Error", "Users failed to load"));
+      }
     });
 
     return { appIsLoaded, userInfo, logOut };

@@ -29,7 +29,6 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const toName = to.name;
-  console.error(authenticated());
   if (authenticated() || to.name === "SignIn") {
     switch (toName) {
       case "AddNewApplication":
